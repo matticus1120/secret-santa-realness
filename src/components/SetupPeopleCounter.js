@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-const PeopleCounter = ({ submitPeopleCount }) => {
-  const [countValue, setCountValue] = useState("");
+const SetupPeopleCounter = ({ submitPeopleCount }) => {
+  const [countValue, setCountValue] = useState("2");
 
   const handleSearchCountChange = e => {
     setCountValue(e.target.value);
@@ -25,9 +25,9 @@ const PeopleCounter = ({ submitPeopleCount }) => {
         type="number"
         className="form-control"
       />
-      <input onClick={handlePeopleCount} className="btn btn-success" type="submit" value="Submit" />
+      <button onClick={handlePeopleCount} className="btn btn-success">Next</button>
     </form>
   );
 };
 
-export default PeopleCounter;
+export default SetupPeopleCounter;

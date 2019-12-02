@@ -1,20 +1,11 @@
 import React, { useState } from "react";
 
-const PersonInput = ({ submitPeopleCount, personIndex }) => {
+const SetupPersonInput = ({ setPersonName, personIndex }) => {
   const [name, setName] = useState("");
 
   const handleNameChange = e => {
     setName(e.target.value);
-  };
-
-  const resetInputField = () => {
-    // setCountValue("");  
-  };
-
-  const handlePeopleCount = e => {
-    e.preventDefault(); 
-    submitPeopleCount(name);
-    resetInputField();
+    setPersonName(  e.target.value, personIndex );
   };
 
   return (
@@ -23,11 +14,11 @@ const PersonInput = ({ submitPeopleCount, personIndex }) => {
         value={name}
         className="form-control"
         onChange={handleNameChange}
-        placeHolder={`Person #${personIndex + 1}`}
+        placeholder={`Person #${personIndex + 1}`}
         type="text"
         />
     </div>
   );
 };
 
-export default PersonInput;
+export default SetupPersonInput;

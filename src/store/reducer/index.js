@@ -1,21 +1,16 @@
-export const initialState = {
-  loading: true,
+export var initialState = {
   people: [],
 };
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case "SET_PEOPLE_COUNT":
+    case "SET_GAME_VALUES":
+      initialState.people = action.payload.people;
       return {
         ...state,
         people: action.payload
       };
     case "ADD_PEOPLE":
-      return {
-        ...state,
-        people: action.payload
-      };
-    case "UPDATE_PEOPLE":
       return {
         ...state,
         people: action.payload

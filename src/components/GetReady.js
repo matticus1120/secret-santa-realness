@@ -1,17 +1,16 @@
-import React, {Component} from 'react';
-import axios from 'axios';
+import React, { useReducer, useEffect } from "react";
+import { initialState, reducer } from "../store/reducer";
 
-export default class GetReady extends Component {
+const GetReady = ({ submitPeopleCount }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-    constructor(props) {
-        super(props);
-    }
+  console.log('state', state);
 
-    render() {
-        return (
-            <div>
-                <h2>Get Ready!</h2>
-             </div>
-        )
-    }
-}
+  return (
+    <div>
+     <h3>Get ready</h3>
+    </div>
+  );
+};
+
+export default GetReady;
