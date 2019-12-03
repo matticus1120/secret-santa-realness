@@ -24,19 +24,33 @@ https://til.hashrocket.com/posts/z8cimdpghg-passing-props-down-to-react-router-r
 
 
 function App() {
- 
-  const [state, dispatch] = useReducer(reducer, initialState);
-  
-  const handleSetupSubmit = (values) => {
-    dispatch({
-      type: "SET_GAME_VALUES",
-      payload: values
-    });
-    
-  }
 
-  return (
-    <Router>
+    const [state, dispatch] = useReducer(reducer, initialState);
+
+    console.log('state', state);
+
+
+    /*
+    submit the entire setup form
+     */
+    const handleSetupSubmit = (values) => {
+        dispatch({
+            type: "SET_GAME_VALUES",
+            payload: values
+        });
+    }
+
+    /*
+    set the round winner - no values passed
+     */
+    const handleSetWinner = (values) => {
+        dispatch({
+            type: "SET_WINNER"
+        });
+    }
+
+    return (
+        <Router>
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="collpase navbar-collapse">
               <ul className="navbar-nav">
@@ -83,11 +97,26 @@ function App() {
             />
             <Route path="/get-ready" component={GetReady} />
             <Route path="/whos-up" component={WhosUp} />
-            <Route path="/the-winner" component={TheWinner} />
+            <Route path="/the-winner" 
+              render={(routeProps) => (
+                  <TheWinner
+                    handleSetWinner={handleSetWinner}
+                    winner={state.winner}
+                    reducedPeople={state.reducedPeople}
+                    people={state.people}
+                  />
+                )}
+            />
             <Route path="/all-done" component={AllDone} />
             </div>
       </Router>
-  );
+    );
 }
+
+
+
+
+
+
 
 export default App;
