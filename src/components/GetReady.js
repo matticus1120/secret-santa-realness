@@ -10,8 +10,8 @@ const GetReady = ({ submitPeopleCount }) => {
 
   return (
     <div>
-     <h3>Get ready</h3>
-     <Link to='/whos-up'>Get started!</Link>
+     <h3>Who’s Up First?</h3>
+     <Link className="btn btn-success" to='/the-winner'>Click Here to Find Out</Link>
     </div>
   );
 };

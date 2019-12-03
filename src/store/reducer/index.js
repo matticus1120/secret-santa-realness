@@ -1,15 +1,15 @@
 import StoreHelpers from '../store-helpers';
 
-StoreHelpers.testHelpers();
-
 var people = localStorage.getItem("people") ? JSON.parse(localStorage.getItem("people")) : [];
 var reducedPeople = localStorage.getItem("people") ? JSON.parse(localStorage.getItem("people")) : [];
+console.log('setting again');
 
 export var initialState = {
-    people: people,
-    reducedPeople: reducedPeople,
+    people: [],
+    reducedPeople: [],
     winner: null
 };
+
 
 export const reducer = (state, action) => {
     switch (action.type) {
@@ -22,9 +22,14 @@ export const reducer = (state, action) => {
             initialState.people = action.payload.people;
             initialState.reducedPeople = action.payload.people;
 
+            // appStore.people = action.payload.people;
+            // appStore.reducedPeople = action.payload.people;
+
             const json = JSON.stringify(initialState.people);
 
             localStorage.setItem("people", json);
+
+            console.log('initialState', initialState);
 
             return {
                 ...state,
@@ -34,18 +39,13 @@ export const reducer = (state, action) => {
         case "SET_WINNER":
 
             let winningInfo = StoreHelpers.getWinnerReducedPeople(initialState.reducedPeople);
-
             initialState.winner = winningInfo.winner;
             initialState.reducedPeople = winningInfo.peopleReduced;
 
             return {
-                ...initialState
+                ...state
             };
-        case "ADD_PEOPLE":
-            return {
-                ...state,
-                people: action.payload
-            };
+       
         default:
             return state;
     }

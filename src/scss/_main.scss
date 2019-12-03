@@ -1,3 +1,10 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
 /******  LOGIN PAGE  ******/
 .login-container{
   display: flex;
@@ -383,3 +390,49 @@ div.modal-form-inputs label {
 }
 
 /*******  MODAL  *******/
+
+
+.navbar {
+  position: absolute !important;
+  width: 100%;
+}
+#root {
+  height: 100%;
+}
+.page-wrapper {
+  // margin-top: 40px;
+  height: 100%;
+  .container {
+    height: 100%;
+  }
+  &__inner {
+    display: flex;
+    align-items: center;
+    min-height: 100%;
+    padding-top: 80px;
+  }
+}
+
+
+
+input[type="text"],
+input[type="number"] {
+  margin: 10px 0;
+}
+
+
+
+.setup-section {
+  padding: 20px 0;
+}
+
+
+
+
+
+
+
+
+
+
+

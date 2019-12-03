@@ -3,7 +3,7 @@ import "./scss/style.scss";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import { initialState, reducer } from "./store/reducer";
+import { initialState, reducer, appStore } from "./store/reducer";
 
 import Welcome from './components/Welcome';
 import Instructions from './components/Instructions';
@@ -84,31 +84,36 @@ function App() {
               </ul>
             </div>
           </nav>
-          <div className="container">
-            <Route path="/" exact component={Welcome} />
-            <Route path="/counter" component={Counter} />
-            <Route path="/instructions" component={Instructions} />
-            <Route path="/setup" 
-              render={(routeProps) => (
-                  <Setup
-                    handleSetupSubmit={handleSetupSubmit}
-                  />
-                )}
-            />
-            <Route path="/get-ready" component={GetReady} />
-            <Route path="/whos-up" component={WhosUp} />
-            <Route path="/the-winner" 
-              render={(routeProps) => (
-                  <TheWinner
-                    handleSetWinner={handleSetWinner}
-                    winner={state.winner}
-                    reducedPeople={state.reducedPeople}
-                    people={state.people}
-                  />
-                )}
-            />
-            <Route path="/all-done" component={AllDone} />
-            </div>
+          <div className="page-wrapper">
+
+            <div className="container">
+            <div className="page-wrapper__inner">
+              <Route path="/" exact component={Welcome} />
+              <Route path="/counter" component={Counter} />
+              <Route path="/instructions" component={Instructions} />
+              <Route path="/setup" 
+                render={(routeProps) => (
+                    <Setup
+                      handleSetupSubmit={handleSetupSubmit}
+                    />
+                  )}
+              />
+              <Route path="/get-ready" component={GetReady} />
+              <Route path="/whos-up" component={WhosUp} />
+              <Route path="/the-winner" 
+                render={(routeProps) => (
+                    <TheWinner
+                      handleSetWinner={handleSetWinner}
+                      winner={state.winner}
+                      reducedPeople={state.reducedPeople}
+                      people={state.people}
+                    />
+                  )}
+              />
+              <Route path="/all-done" component={AllDone} />
+              </div>
+              </div>
+              </div>
       </Router>
     );
 }

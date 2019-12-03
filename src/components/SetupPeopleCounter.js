@@ -18,15 +18,19 @@ const SetupPeopleCounter = ({ submitPeopleCount }) => {
   };
 
   return (
-    <form className="search">
-      <input
-        value={countValue}
-        onChange={handleSearchCountChange}
-        type="number"
-        className="form-control"
-      />
-      <button onClick={handlePeopleCount} className="btn btn-success">Next</button>
-    </form>
+    <div className="setup-section">
+      <div className="form-row">
+        <label htmlFor="people-counter">Number of Participants</label>
+          <input
+            name="people-counter"
+            value={countValue}
+            onChange={handleSearchCountChange}
+            type="number"
+            className="form-control"
+          />
+          <button onClick={handlePeopleCount} className="btn btn-success">Next</button>
+      </div>
+    </div>
   );
 };
 

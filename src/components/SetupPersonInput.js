@@ -9,7 +9,7 @@ const SetupPersonInput = ({ setPersonName, personIndex }) => {
   };
 
   return (
-    <div>
+    <div className="form-row">
       <input
         value={name}
         className="form-control"

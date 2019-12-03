@@ -47,12 +47,16 @@ export default class TheWinner extends Component {
     }
 
     getWinnerContent = () => {
+        console.log('this.props', this.props);
         var index = this.props.people.length - this.props.reducedPeople.length;
+        if( !this.props.reducedPeople.length ) {
+            return <div><h2>That's all!</h2></div>
+        }
         return (
             <div>
                 <h2>The winner is {this.props.winner}</h2>
-                <button className="btn btn-success" onClick={this.hanldeUpNext}>Who's up next?</button>
-                <p>{index} / {this.props.people.length}</p>
+                <button className="btn btn-success" onClick={this.hanldeUpNext}>Who's next?</button>
+                {/*<p>{index} / {this.props.people.length}</p>*/}
             </div>
         )
     }
@@ -65,9 +69,8 @@ export default class TheWinner extends Component {
 
     render() {
         let content = this.state.loading ? this.getLoadingContent() : this.getWinnerContent();
-        var divClass = `loading-${this.state.loading}`;
         return (
-            <div className={divClass}>
+            <div>
                 {content}
              </div>
         )

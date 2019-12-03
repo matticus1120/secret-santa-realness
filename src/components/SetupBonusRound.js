@@ -16,12 +16,14 @@ const SetupBonusRound = ({ peopleAreSet, handleBonusRound }) => {
   
 
   return (
+    <div className="setup-section">
     <div>
-      <h3>Gonna do a bonus round?</h3>
-      <div className = "form-row">
-        <button className="btn btn-danger" onClick={setBonusRoundTrue}>Nah I am gouda.</button>
-        <button className="btn btn-success" onClick={setBonusRoundFalse}>Sure, yes.</button>
+      <h3>Bonus Round, Anyone?</h3>
+      <div className = "_form-row">
+        <button className="btn btn-danger" onClick={setBonusRoundTrue}>Oh, We Couldn’t Possibly</button>
+        <button className="btn btn-success" onClick={setBonusRoundFalse}>Well, If You Insist</button>
       </div>
+    </div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 export default class Welcome extends Component {
 
@@ -10,7 +11,10 @@ export default class Welcome extends Component {
     render() {
         return (
             <div>
-                <h2>Welcome!</h2>
+                <h2>Goodbye, hat. So long, tiny papers. Hello, the future of gift exchange.</h2>
+                <h1>Welcome to Secret Santa Realness</h1>
+                <p> There’s no wrong way to exchange gifts, but there is a right way. That way is this way. Secret Santa Realness is The Internet’s First Ever* Fully Automated Holiday Party Gift-Exchange Name-Generator.</p>
+                <Link to="/instructions" className="btn btn-success">Let’s Party</Link>
                 
              </div>
         )
