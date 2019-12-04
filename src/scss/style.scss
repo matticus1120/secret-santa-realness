@@ -1,2 +1,65 @@
-@import "main";
-@import "header";
+/*!
+Theme Name: BJZM
+Author: Zafer Sawaf and Matt McCollough
+Author URI: www.blackjet.ca
+Description: Blackjet's advanced starter Wordpress theme. 
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: bjzm
+*/
+
+/* Import Font Awesome */
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+
+/* ----------------------------------------------------------------------------
+ * Vendors
+ * ------------------------------------------------------------------------- */
+@import "vendor/slick";
+/* ----------------------------------------------------------------------------
+ * Mixins & Variables
+ * ------------------------------------------------------------------------- */
+@import "partials/common/grid";
+@import "partials/common/variables";
+@import "partials/mixins/mixins";
+
+
+/* ----------------------------------------------------------------------------
+ * 3rd Party
+ * ------------------------------------------------------------------------- */
+
+
+/* ----------------------------------------------------------------------------
+ * Common & Structure
+ * ------------------------------------------------------------------------- */
+@import "partials/common/container";
+@import "partials/common/structure";
+@import "partials/common/text";
+
+
+
+/* ----------------------------------------------------------------------------
+ * Components
+ * ------------------------------------------------------------------------- */
+
+@import "partials/components/main";	
+@import "partials/components/main-header";	
+@import "partials/components/navigation";	
+@import "partials/components/hero";	
+@import "partials/components/navigation-mobile";	
+@import "partials/components/button";
+@import "partials/components/form";
+
+
+/* ----------------------------------------------------------------------------
+ * Pages
+ * ------------------------------------------------------------------------- */
+@import "partials/pages/home";
+
+
+
+
+
+
+
+

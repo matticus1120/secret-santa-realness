@@ -9,7 +9,8 @@ export default class Instructions extends Component {
 
     render() {
         return (
-            <div>
+            <div className="main main--welcome">
+                <div className="hero">
                 <h2>How does it work? Read on.</h2>
                 <h1>How it Works</h1>
                 <p>Yankee Swap, White Elephant and to a lesser extent Gifty Stealy, Secret Santa goes by many names, but the rules remain the same.</p>
@@ -23,7 +24,10 @@ export default class Instructions extends Component {
 <li>Participants can also opt-in for a bonus round, in which everyone is given another chance to steal a gift and ruin someone’s holiday.  </li>
 </ol>
 
+<div className="cta-row">
 <Link to="/setup" className="btn btn-success">We Understand, Can We Party Now?</Link>
+</div>
+             </div>
              </div>
         )
     }

@@ -1,0 +1,96 @@
+/* form */
+.gform {
+	&_body {
+		position: relative;
+		z-index: 10;
+	}
+	&_footer {
+		clear: both;
+		position: relative;
+		z-index: 5;
+		text-align: right;
+		margin-top: 35px;
+	}
+}
+
+
+.validation_error {
+	color: $red;
+	position: absolute;
+}
+img.gform_ajax_spinner {
+	display: none!important;
+}
+input[type="text"], input[type="email"],input[type="number"], textarea, .chosen-container-single .chosen-single, .chosen-container .chosen-results li {
+	border-radius: 0;
+	border: solid thin #212F3D;
+	color: #000000;
+	display: inline-block;
+	font-family: inherit;
+	font-size: 30px;
+	padding: 0 30px;
+	// height: 47px;
+	letter-spacing: normal;
+	// line-height: 17px;
+	// padding: 17px 10px 4px !important;
+	resize: none;
+	-webkit-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+	text-align: left;
+	width: 100%;
+	cursor: url("../assets/img/tree.png"), auto;
+	&:hover, &:active {
+		cursor: url("../assets/img/tree.png"), auto;
+	}
+	
+	&:focus {
+		outline: none;
+		border-color: green;
+	}
+}
+
+
+
+.cta-row {
+	text-align: center;
+	width: 100%;
+}
+
+.form-row {
+	width: 100%;
+	display: block;
+	label {
+		display: block;
+	}
+	&--people-counter {
+		    text-align: center;
+		input {
+max-width: 300px;
+    margin: 0 auto;
+    font-size: 50px;
+    text-align: center;
+    border-radius: 20px;
+    margin-bottom: 12px;
+		}
+	}
+}
+
+.people-form {
+	&__inputs {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		.form-row {
+			width: calc(50% - 10px);
+		}
+	}
+}
+
+
+
+
+
+
+
+
+

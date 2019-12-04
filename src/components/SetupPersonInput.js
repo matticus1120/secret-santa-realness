@@ -9,10 +9,10 @@ const SetupPersonInput = ({ setPersonName, personIndex }) => {
   };
 
   return (
-    <div className="form-row">
+    <div className="form-row form-row--count-input">
       <input
         value={name}
-        className="form-control"
+        className="form-control number"
         onChange={handleNameChange}
         placeholder={`Person #${personIndex + 1}`}
         type="text"

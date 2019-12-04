@@ -67,7 +67,9 @@ export default class Setup extends Component {
                         </div>
                         <div className="people-form__footer">
                             <p><small><em>If two participants share a legal first name, please also enter the first initial of their last names. If two participants share a legal first name and the first initial of their last names, please enter ‘Stretch’ as the name of the taller participant.</em></small></p>
+                            <div className="cta-row">
                             <input onClick={this.submitPeopleNames} className="btn btn-success" type="submit" value="Next" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -104,7 +106,8 @@ export default class Setup extends Component {
         var personForm = this.getPersonForms();
 
         return (
-            <div>
+            <div className="main main--welcome">
+                <div className="hero">
                 {this.renderRedirect()}
                 <h2>Santa Needs Some Answers</h2>
                 <h1>First, paperwork. Then, party.</h1>
@@ -126,6 +129,7 @@ export default class Setup extends Component {
                     setupValues={this.state}
                 />
 
+             </div>
              </div>
         )
     }

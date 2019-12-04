@@ -1,0 +1,139 @@
+/**
+ * Heading Sizes
+*/
+
+/* Custom Selection Colour */
+
+*::selection {
+  background: $theme-red;
+  color: white;
+}
+
+@mixin headingFont {
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
+@mixin bodyFont {
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+@mixin labelLine {
+	@include bodyFont;
+	font-weight: 700;
+	line-height: 40px;
+	font-size: 14px;
+	position: relative;
+	margin: 0;
+	padding-left: 30px;
+	&:before {
+		content: "";
+		width: 20px;
+		height: 2px;
+		background: $black;
+		position: absolute;
+		top: 22px;
+		left: 0;
+	}
+}
+
+@mixin h1 {
+	font-size: 70px;
+	font-weight: 700;
+	line-height: 70px;
+	text-align: center;
+	background: $candyCaneBg;
+	 -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  text-shadow: none;
+  margin: 0 auto;
+  font-weight: bold;
+	@include headingFont;
+	@include largeTabletMax {
+		    font-size: 60px;
+    line-height: 1;
+	}
+	@include smallTabletMax {
+		font-size: 45px;
+		line-height: 1;
+		margin: 0;
+		text-indent: 0;
+	}
+	@include mobileMax {
+		font-size: 30px;
+		line-height: 1;
+		text-indent: 0;
+		padding: 0;
+	}
+}
+@mixin heroHeading {
+	@include h1;
+}
+@mixin h2 {
+	font-size: 30px;
+	font-weight: 700;
+	line-height: 1;
+	text-align: center;
+	@include headingFont;
+	@include largeTabletMax {
+		font-size: 20px;
+		line-height: 1;
+	}
+	@include smallTabletMax {
+		font-size: 17px;
+		line-height: 1;
+	}
+}
+@mixin h3 {
+	font-size: 20px;
+	font-weight: 500;
+	line-height: 1;
+	text-align: center;
+	@include bodyFont;
+	@include largeTabletMax {
+		font-size: 15px;
+		line-height: 1;
+	}
+	@include smallTabletMax {
+		font-size: 13px;
+		line-height: 1;
+	}
+}
+@mixin h4 {
+	font-size: 18px;
+	@include bodyFont;
+}
+@mixin h5 {
+	font-size: 12px;
+	font-weight: 700;
+	text-align: center;
+	@include headingFont;
+}
+@mixin span {
+	// font-size: 36px;
+	// font-weight: 300;
+	// text-align: center;
+	// @include bodyFont;
+}
+@mixin p {
+	@include bodyFont;
+	@include largeTabletMin {
+		font-size: 18px;
+		font-weight: 400;
+		line-height: 30px;
+	}
+	@include largeTabletMax {
+		font-size: 16px;
+		line-height: 24px;
+	}
+	@include mobileMax {
+		font-size: 14px;
+		line-height: 19px;
+	}	
+}
+@mixin bodyCopy {
+	font-size: 15px;
+	margin-bottom: 17px;
+	@include bodyFont;
+}
+
+

@@ -1,7 +1,9 @@
 import React, { Component, useReducer, useEffect } from "react";
-import "./scss/style.scss";
+
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+
+import "./scss/style.scss";
 
 
 
@@ -39,7 +41,6 @@ export default class App extends Component {
 
   componentDidMount = () => {
     var people = localStorage.getItem("people") ? JSON.parse(localStorage.getItem("people")) : [];
-    console.log('people storage ', people);
     this.setState({
       people: people
     });
@@ -61,7 +62,7 @@ export default class App extends Component {
   render() {
       return (
           <Router>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar navbar-expand-lg">
               <div className="collpase navbar-collapse">
                 <ul className="navbar-nav">
                   <li className="navbar-item">
@@ -130,6 +131,7 @@ export default class App extends Component {
 
                 </div>
                 </div>
+                <div className="clearfix"></div>
                 </div>
         </Router>
       );

@@ -7,7 +7,7 @@ const GetReady = ({ submitPeopleCount }) => {
   // const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <div>
+    <div className="get-ready">
      <h3>Who’s Up First?</h3>
      <Link className="btn btn-success" to='/the-winner'>Click Here to Find Out</Link>
     </div>

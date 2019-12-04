@@ -48,7 +48,9 @@ const SetupReview = ({ readyForReview, submitSetup, setupValues }) => {
         <div>
 
         <h3>Are you ready to party?</h3>
+        <div className="cta-row">
           <button className="btn btn-success" onClick={submitSetup} >Ok Let’s Party</button>
+          </div>
         </div>
         
       </div>

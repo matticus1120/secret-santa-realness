@@ -1,0 +1,181 @@
+@mixin largeDesktopMin {
+	@media #{$large_desktop_min} {
+		@content;
+	}
+}
+@mixin smallDesktopMin {
+	@media #{$small_desktop_min} {
+		@content;
+	}
+}
+@mixin smallDesktopMax {
+	@media #{$small_desktop_max} {
+		@content;
+	}
+}
+@mixin largeTabletMin {
+	@media #{$large_tablet_min} {
+		@content;
+	}
+}
+@mixin largeTabletMax {
+	@media #{$large_tablet_max} {
+		@content;
+	}
+}
+@mixin smallTabletMin {
+	@media #{$small_tablet_min} {
+		@content;
+	}
+}
+@mixin smallTabletMax {
+	@media #{$small_tablet_max} {
+		@content;
+	}
+}
+@mixin mobileMin {
+	@media #{$mobile_min} {
+		@content;
+	}
+}
+@mixin mobileMax {
+	@media #{$mobile_max} {
+		@content;
+	}
+}
+@mixin mobileHeaderBreakpointMin {
+	@media #{$mobile_header_breakpoint_min} {
+		@content;
+	}
+}
+@mixin mobileHeaderBreakpoint {
+	@media #{$mobile_header_breakpoint} {
+		@content;
+	}
+}
+
+
+
+
+
+
+
+
+/**
+ * Container
+ */
+@mixin container {
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: $mobile_gutter;
+	padding-right: $mobile_gutter;
+	@include mobileMin {
+		width: 100%;
+		padding-left: $tablet_gutter;
+		padding-right: $tablet_gutter;
+	}
+	@include smallTabletMin {
+		width: $container_sm_width;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	@include largeTabletMin {
+		width: $container_md_width;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	@include smallDesktopMin {
+		width: $container_lg_width;
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+
+/**
+ * Page Wrapper
+*/
+@mixin pageWrapper {
+	width: 100%;
+	max-width: 1920px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+/**
+ * Full Height
+ */
+@mixin fullHeight($min-height: 400px) {
+	height: calc(100vh - #{$header-main-height});
+	min-height: $min-height;
+}
+
+@mixin fullWidth {
+	width: 100%;
+}
+
+@function elemWindowHeight( $heightRatio: 0.5 ) {
+	@return calc( (100vh - #{$header-main-height}) * #{$heightRatio} );
+}
+
+@function getContainerFromWindowEdge($container_width, $direction: 1) {
+	@return calc( ( 100vw - #{$container_width} ) / 2 * #{$direction} );
+}
+
+@mixin containerFromRight() {
+	right: $mobile_gutter;
+	@include mobileMin {
+		right: $tablet_gutter;
+	}
+	@include smallTabletMin {
+		right: getContainerFromWindowEdge( calc( #{$container_sm_width}), 1 );
+	}
+	@include largeTabletMin {
+		right: getContainerFromWindowEdge( calc( #{$container_md_width}), 1 );
+	}
+	@include smallDesktopMin {
+		right: getContainerFromWindowEdge( calc( #{$container_lg_width}), 1 );
+	}
+}
+@mixin containerFromLeft() {
+	@include largeTabletMin {
+		left: getContainerFromWindowEdge( $container_md_width );
+	}
+	@include smallDesktopMin {
+		left: getContainerFromWindowEdge( $container_lg_width );
+	}
+}
+
+
+/**
+ * column widths
+*/
+
+/* get fixed width given column width percentage, container fixed width */
+@function getColumnFixedWidth( $column-width, $container_width ) {
+	$percent: $column-width / 100%;
+	@return calc( #{$container_width} * #{$percent});
+}
+
+/* include responsive width styles given column width */
+@mixin columnFixedWidth( $column-width ) {
+	width: calc(100vw - calc( #{$mobile_gutter} * 2 ));
+	@include mobileMin {
+		width: calc(100vw - calc( #{$tablet_gutter} * 2 ));
+	}
+	@include smallTabletMin {
+		width: getColumnFixedWidth( $col-12-width, $container_sm_width );
+	}
+	@include largeTabletMin {
+		width: getColumnFixedWidth( $column-width, $container_md_width );
+	}
+	@include smallDesktopMin {
+		width: getColumnFixedWidth( $column-width, $container_lg_width );
+	}
+}
+
+
+
+
+
+

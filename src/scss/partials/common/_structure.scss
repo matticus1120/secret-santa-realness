@@ -1,0 +1,100 @@
+/* ----------------------------------------------------------------------------
+ * Structure
+ * ------------------------------------------------------------------------- */
+
+ /* global box-sizing */
+ *,
+ *:after,
+ *:before {
+ 	-moz-box-sizing: border-box;
+ 	box-sizing: border-box;
+ 	-webkit-font-smoothing: antialiased;
+ 	font-smoothing: antialiased;
+ 	text-rendering: optimizeLegibility;
+ }
+
+ /* html element 62.5% font-size for REM use */
+ html {
+ 	height:100%;
+ 	min-height:100%;
+ }
+
+ body {
+ 	font-size: 16px;
+ 	margin: 0;
+ 	height:100%;
+ 	min-height:100%;
+ }
+
+ html, body {
+ 	margin: 0 !important;
+ }
+
+ .no-gutters {
+ 	margin-right: 0;
+ 	margin-left: 0;
+
+ 	> .col,
+ 	> [class*="col-"] {
+ 		padding-right: 0;
+ 		padding-left: 0;
+ 	}
+ }
+
+ .bjzm-wrapper {
+ 	padding-top: $header-main-height;
+ 	padding-bottom: 30px;
+ 	overflow: hidden;
+	&--cards,
+	&--sections {
+		.bjzm-wrapper__inner {
+			display: flex;
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+	}
+ }
+
+ /* clear */
+ .clear:before,
+ .clear:after {
+ 	content: ' ';
+ 	display: table;
+ }
+
+ .clear:after {
+ 	clear: both;
+ }
+
+ .clear {
+ 	*zoom: 1;
+ }
+
+ img {
+ 	max-width: 100%;
+ 	height: auto;
+ }
+
+
+ li {
+ 	list-style: none;
+ }
+
+ input:focus {
+ 	outline: 0;
+ }
+
+@media #{$small_tablet_max} {
+	.bjzm-wrapper {
+		    // min-height: calc(100vh - 247px);
+	}
+}
+
+@media #{$mobile_header_breakpoint} {
+ 	.bjzm-wrapper {
+ 		padding-top: $header-mobile-height;
+ 	}
+ }
+
+
+

@@ -1,0 +1,13 @@
+.post-loop {
+	margin-top: 60px;
+}
+@mixin mobileMax {
+	.bjzm-wrapper {
+		&--blog {
+			.content-block__image > .container {
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+	}
+}

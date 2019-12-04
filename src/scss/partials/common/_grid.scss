@@ -1,0 +1,113 @@
+
+// $col-1-ratio: calc( $ratio * .083333333 );
+
+
+$col-1-width: 08.3333333%;
+$col-2-width: 16.66666667%;
+$col-3-width: 25%;
+$col-4-width: 33.33333333%;
+$col-5-width: 41.6666667%;
+$col-6-width: 50%;
+$col-7-width: 58.3333333%;
+$col-8-width: 66.6666667%;
+$col-9-width: 75%;
+$col-10-width: 83.3333333%;
+$col-11-width: 91.6666667%;
+$col-12-width: 100%;
+
+@mixin col-1 {
+	width: $col-1-width;
+	flex-basis: $col-1-width;
+}
+@mixin col-2 {
+	width: $col-2-width;
+	flex-basis: $col-2-width;
+}
+@mixin col-3 {
+	width: $col-3-width;
+	flex-basis: $col-3-width;
+}
+@mixin col-4 {
+	width: $col-4-width;
+	flex-basis: $col-4-width;
+}
+@mixin col-5 {
+	width: $col-5-width;
+	flex-basis: $col-5-width;
+}
+@mixin col-6 {
+	width: $col-6-width;
+	flex-basis: $col-6-width;
+}
+@mixin col-7 {
+	width: $col-6-width;
+	flex-basis: $col-6-width;
+}
+@mixin col-8 {
+	width: $col-8-width;
+	flex-basis: $col-8-width;
+}
+@mixin col-9 {
+	width: $col-9-width;
+	flex-basis: $col-9-width;
+}
+@mixin col-10 {
+	width: $col-10-width;
+	flex-basis: $col-10-width;
+}
+@mixin col-11 {
+	width: $col-11-width;
+	flex-basis: $col-11-width;
+}
+@mixin col-12 {
+	width: $col-12-width;
+	flex-basis: $col-12-width;
+}
+
+.row {
+	display: flex;
+}
+.col-1 {
+	@include col-1;
+}
+.col-2 {
+	@include col-2;
+}
+.col-3 {
+	@include col-3;
+}
+.col-4 {
+	@include col-4;
+}
+.col-5 {
+	@include col-5;
+}
+.col-6 {
+	@include col-6;
+}
+.col-7 {
+	@include col-7;
+}
+.col-8 {
+	@include col-8;
+}
+.col-9 {
+	@include col-9;
+}
+.col-10 {
+	@include col-10;
+}
+.col-11 {
+	@include col-11;
+}
+
+/* @include largeTabletMax {
+	div[class^="col-"] {
+		width: 100%;
+	}
+} */
+
+
+
+
+

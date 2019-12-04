@@ -1,0 +1,31 @@
+
+.page-outer {
+  width: 100%;
+}
+.page-wrapper {
+  @include pageWrapper;
+}
+.container {
+  @include container;
+  &__relative {
+    position: relative;
+  }
+}
+
+body.development {
+  .page-outer {
+    background-color: rgba(135, 211, 124, 0.58);
+    // padding-top: 20px;
+    // padding-bottom: 20px;
+  }
+  .page-wrapper {
+    background-color: rgba(34, 167, 240, 0.5);
+    // padding-top: 20px;
+    // padding-bottom: 20px;
+  }
+  .container {
+    background-color: rgba(137, 114, 158, 0.46);
+    // padding-top: 20px;
+    // padding-bottom: 20px;
+  }
+}

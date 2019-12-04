@@ -163,7 +163,7 @@ export default class TheWinner extends Component {
         let footerContent = this.state.loading ? '' : this.getFooterContent();
 
         return (
-            <div>
+            <div className="winner-content">
                 {content}
                 {footerContent}
              </div>

@@ -33,11 +33,13 @@ export default class AllDone extends Component {
     render() {
         var jab = getJab(this.props.people);
         return (
-            <div>
+            <div className="main main--welcome">
+                <div className="hero">
                 <h1>Thanks for using Secret Santa Realness!</h1>
                 <h3> The Internet’s First Ever* Fully Automated Holiday Party Gift-Exchange Name-Generator</h3>
                 <p><small><em>*Unverified</em></small></p>
                 <p>{jab}</p>
+             </div>
              </div>
         )
     }
