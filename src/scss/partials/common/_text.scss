@@ -27,8 +27,30 @@ p, li {
 a {
 	display: inline;
 }
+.h1-wrapper {
+	position: relative;
+}
 h1 {
 	@include h1;
+	&.faker {
+		position: absolute;
+		color: #FF00F5;
+		left: 0;
+		width: 100%;
+		z-index: 0;
+		margin: 1px 1px;
+		top: 0;
+		transform: translate(4px, 27px);
+		text-shadow: 5px 6px 0px #00FF14;
+	}
+	&.candy-cane {
+		background: $candyCaneBg;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		z-index: 1;
+		position: relative;
+
+	}
 }
 h2 {
 	@include h2;
@@ -64,23 +86,23 @@ a {
 }
 
 .custom-counter {
-  counter-reset: section;
+	counter-reset: section;
 }
 
 
-	ul:not(.bjzm-gallery__list, .bjzm-slideshow__list),
-	ol {
-		margin-left: 10px;
-		margin-bottom: 40px;
+ul:not(.bjzm-gallery__list, .bjzm-slideshow__list),
+ol {
+	margin-left: 10px;
+	margin-bottom: 40px;
+}
+li {
+	list-style-type: none;
+	margin-bottom: 20px;
+	&::before {
+		content:"·";
+		font-size: 28px;
+		left: -10px;
+		position: relative;
 	}
-	li {
-		list-style-type: none;
-		margin-bottom: 20px;
-		&::before {
-			content:"·";
-			font-size: 28px;
-			left: -10px;
-			position: relative;
-		}
-	}
+}
 

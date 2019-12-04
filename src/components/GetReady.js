@@ -8,8 +8,13 @@ const GetReady = ({ submitPeopleCount }) => {
 
   return (
     <div className="get-ready">
+
      <h3>Who’s Up First?</h3>
+     
+     <img src="/assets/img/loader-santa.gif" />
+     <div className="cta-row">
      <Link className="btn btn-success" to='/the-winner'>Click Here to Find Out</Link>
+     </div>
     </div>
   );
 };

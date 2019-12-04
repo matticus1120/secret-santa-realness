@@ -3,12 +3,16 @@ import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 
 
+
+
 import { initialState, reducer } from "../store/reducer";
 
 import SetupPeopleCounter from './SetupPeopleCounter';
 import SetupPersonInput from './SetupPersonInput';
 import SetupBonusRound from './SetupBonusRound';
 import SetupReview from './SetupReview';
+
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop) ;
 
 export default class Setup extends Component {
 
@@ -22,10 +26,19 @@ export default class Setup extends Component {
             doBonusRound: false,
             setupComplete: false
         }
+
+        this.personForms = React.createRef();
+        this.bonusRound = React.createRef(); 
+        this.bonusRound = React.createRef();
+        this.review = React.createRef();
     }
 
     handlePeopleCount = (count) => {
         this.setState({ peopleCount: parseInt(count) });
+
+        setTimeout(()=> {
+            scrollToRef(this.personForms);
+        }, 400)
     }
     
     setPersonName = (personName, personIndex) => {
@@ -40,7 +53,10 @@ export default class Setup extends Component {
         }
         this.setState({
             peopleAreSet: true
-        })
+        });
+        setTimeout(()=> {
+            scrollToRef(this.bonusRound);
+        }, 400)
     }
 
     getPersonForms() {
@@ -57,7 +73,8 @@ export default class Setup extends Component {
                 );
 
             }
-        
+
+
             return (
                 <div className="setup-section">
                     <div className="people-form">
@@ -76,7 +93,6 @@ export default class Setup extends Component {
             );
 
         }
-
     }
 
     handleBonusRound = (doBonusRound) => {
@@ -85,7 +101,11 @@ export default class Setup extends Component {
             doBonusRound: doBonusRound,
             readyForReview: true
         });
-        
+
+        setTimeout(()=> {
+            scrollToRef(this.review);
+        }, 400)
+
     }
 
     handleSubmitSetup = () => {
@@ -104,30 +124,43 @@ export default class Setup extends Component {
     render = () => {
         
         var personForm = this.getPersonForms();
+        /*this.personForms = React.createRef();
+        this.bonusRound = React.createRef(); 
+        this.bonusRound = React.createRef();
+        this.review = React.createRef();*/
 
         return (
             <div className="main main--welcome">
                 <div className="hero">
                 {this.renderRedirect()}
                 <h2>Santa Needs Some Answers</h2>
-                <h1>First, paperwork. Then, party.</h1>
+                 <div className="h1-wrapper">
+                        <h1 className="candy-cane">First, paperwork. Then, party.</h1>
+                        <h1 className="faker">First, paperwork. Then, party.</h1>
+                        </div>
                 
                 <SetupPeopleCounter 
                     submitPeopleCount={this.handlePeopleCount}
                 />
 
-                {personForm}
+                <div className="setup-section-anchor" id="person-forms" ref={this.personForms}>
+                    {personForm}
+                </div>
 
-                <SetupBonusRound
-                    peopleAreSet={this.state.peopleAreSet}
-                    handleBonusRound={this.handleBonusRound}
-                />
+                <div className="setup-section-anchor" id="bonus-round" ref={this.bonusRound}>
+                    <SetupBonusRound
+                        peopleAreSet={this.state.peopleAreSet}
+                        handleBonusRound={this.handleBonusRound}
+                    />
+                    </div>
 
-                <SetupReview
-                    readyForReview={this.state.readyForReview}
-                    submitSetup={this.handleSubmitSetup}
-                    setupValues={this.state}
-                />
+                <div className="setup-section-anchor" id="review" ref={this.review}>
+                    <SetupReview
+                        readyForReview={this.state.readyForReview}
+                        submitSetup={this.handleSubmitSetup}
+                        setupValues={this.state}
+                    />
+                </div>
 
              </div>
              </div>

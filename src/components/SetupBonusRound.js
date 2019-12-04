@@ -18,7 +18,7 @@ const SetupBonusRound = ({ peopleAreSet, handleBonusRound }) => {
   return (
     <div className="setup-section">
     <div>
-      <h3>Bonus Round, Anyone?</h3>
+      <label>Bonus Round, Anyone?</label>
       <div className = "_form-row">
         <button className="btn btn-success" onClick={setBonusRoundFalse}>Oh, We Couldn’t Possibly</button>
         <button className="btn btn-success" onClick={setBonusRoundTrue}>Well, If You Insist</button>

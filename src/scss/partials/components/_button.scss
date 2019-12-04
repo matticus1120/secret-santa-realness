@@ -46,6 +46,7 @@
 	text-shadow: 3px 3px 0px red;
 	font-size: 27px;
 	position: relative;
+	margin:  13px;
 		&::before {
 			@extend %test;
 			bottom: -10px;

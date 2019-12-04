@@ -12,7 +12,10 @@ export default class Instructions extends Component {
             <div className="main main--welcome">
                 <div className="hero">
                 <h2>How does it work? Read on.</h2>
-                <h1>How it Works</h1>
+                <div className="h1-wrapper">
+                        <h1 className="candy-cane">How it Works</h1>
+                        <h1 className="faker">How it Works</h1>
+                        </div>
                 <p>Yankee Swap, White Elephant and to a lesser extent Gifty Stealy, Secret Santa goes by many names, but the rules remain the same.</p>
                 <ol>
 <li>Participants place wrapped gifts, such as novelty glassware or beef jerky, in a designated Gift Pile.</li>
