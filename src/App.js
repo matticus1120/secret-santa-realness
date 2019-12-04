@@ -35,7 +35,9 @@ export default class App extends Component {
         people: [],
         reducedPeople: [],
         doBonusRound: false,
-        currentWinner: ''
+        currentWinner: '',
+        brandNewValue: '',
+        winningInfo: {}
       }
   }
 
@@ -56,7 +58,8 @@ export default class App extends Component {
     this.setState({
         people: values.people,
         reducedPeople: values.people,
-        doBonusRound: values.doBonusRound
+        doBonusRound: values.doBonusRound,
+        brandNewValue: ''
     });
 
   }
@@ -64,13 +67,15 @@ export default class App extends Component {
   handleSetWinner = () => {
       let winningInfo = StoreHelpers.getWinnerReducedPeople(this.state.reducedPeople);
       console.log('winningInfo', winningInfo);
-      var theWinner = winningInfo.winner;
-      console.log('theWinner', theWinner);
+      let theWinner = winningInfo.winner;
+      console.log('theWinner', typeof theWinner);
       // initialState.winner = winningInfo.winner;
       // initialState.reducedPeople = winningInfo.peopleReduced;
       this.setState({
-        currentWinner: theWinner,
-        reducedPeople: winningInfo.reducedPeople
+        currentWinner: 'theWinner is shitty',
+        reducedPeople: winningInfo.reducedPeople,
+        brandNewValue: winningInfo.someWinner,
+        winningInfo: winningInfo
       });
   }
 
@@ -134,6 +139,9 @@ export default class App extends Component {
                         currentWinner={this.state.currentWinner}
                         reducedPeople={this.state.reducedPeople}
                         people={this.state.people}
+                        everything={this.state}
+                        brandNewValue={this.state.brandNewValue}
+                        winningInfo={this.state.winningInfo}
                       />
                     )}
                 />

@@ -37,7 +37,7 @@ export default class TheWinner extends Component {
     }
 
     componentDidUpdate =(props) => {
-        console.log('props', props);
+        console.reace('props', props);
         if( props.reducedPeople.length != this.state.reducedPeople.length ) {
             this.setState({
                 reducedPeople: props.reducedPeople,

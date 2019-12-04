@@ -8,17 +8,28 @@ var StoreHelpers = {
 	 */
 	getWinnerReducedPeople( peopleReduced ) {
 
+		console.log('--------');
+		console.log('peopleReduced', peopleReduced);
+
 		var peopleLength = peopleReduced.length;
 		var randomNumber = Math.floor((Math.random() * peopleLength) + 1) - 1;
+
+		console.log('randomNumber', randomNumber);
 
 		var winner = peopleReduced[ randomNumber ];
 
 		peopleReduced.splice( randomNumber, 1 );
 
-		var winningInfo = {
+		console.log('peopleReduced', peopleReduced);
+
+		const winningInfo = {
 			peopleReduced: peopleReduced,
-			winner: winner
+			winner: winner,
+			someWinner: winner
 		}
+
+
+		console.log('--------');
 
 		return winningInfo;
 
