@@ -104,8 +104,12 @@ input[type="number"] {
     }
   }
   .winner-left {
-    width: 50%;
+width: 50%;
     min-height: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
   }
   .winner-gif {
     width: 50%;
