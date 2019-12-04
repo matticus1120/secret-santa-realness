@@ -45,7 +45,8 @@ input[type="text"], input[type="email"],input[type="number"], textarea, .chosen-
 	
 	&:focus {
 		outline: none;
-		border-color: green;
+		border: solid 3px $green;
+		box-shadow: none;
 	}
 }
 
@@ -59,21 +60,26 @@ input[type="text"], input[type="email"],input[type="number"], textarea, .chosen-
 .form-row {
 	width: 100%;
 	display: block;
-	label {
-		display: block;
-	}
 	&--people-counter {
-		    text-align: center;
+		text-align: center;
 		input {
-max-width: 300px;
-    margin: 0 auto;
-    font-size: 50px;
-    text-align: center;
-    border-radius: 20px;
-    margin-bottom: 12px;
+			max-width: 300px;
+			margin: 0 auto;
+			font-size: 50px;
+			text-align: center;
+			border-radius: 20px;
+			margin-bottom: 12px;
 		}
 	}
 }
+	label {
+		display: block;
+		margin-bottom: .5rem;
+		font-size: 40px;
+		color: $green;
+		text-shadow: 1px 1px 1px white;
+		text-transform: uppercase;
+	}
 
 .people-form {
 	&__inputs {

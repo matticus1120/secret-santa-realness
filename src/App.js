@@ -61,7 +61,7 @@ export default class App extends Component {
 
   render() {
       return (
-          <Router>
+          <Router onUpdate={() => window.scrollTo(0, 0)}>
             <nav className="navbar navbar-expand-lg">
               <div className="collpase navbar-collapse">
                 <ul className="navbar-nav">
