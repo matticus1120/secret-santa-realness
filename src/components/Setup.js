@@ -27,10 +27,18 @@ export default class Setup extends Component {
             setupComplete: false
         }
 
+        this.mainRef = React.createRef();
         this.personForms = React.createRef();
         this.bonusRound = React.createRef(); 
         this.bonusRound = React.createRef();
         this.review = React.createRef();
+
+
+    }
+    componentDidMount = () => {
+        setTimeout(()=>{
+            scrollToRef(this.mainRef);
+        }, 300);
     }
 
     handlePeopleCount = (count) => {
@@ -130,7 +138,7 @@ export default class Setup extends Component {
         this.review = React.createRef();*/
 
         return (
-            <div className="main main--welcome">
+            <div className="main main--welcome" ref={this.mainRef}>
                 <div className="hero">
                 {this.renderRedirect()}
                 <h2>Santa Needs Some Answers</h2>

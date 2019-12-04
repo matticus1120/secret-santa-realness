@@ -180,14 +180,18 @@ export default class TheWinner extends Component {
         return (
             <div className="winner-columns">
                 <div className="winner-left">
-                    <div className="h1-wrapper">
-                        <h1 className="candy-cane">{this.state.winner} !!!!</h1>
-                        <h1 className="faker">{this.state.winner} !!!!</h1>
+                    <div className="winner-column-inner">
+                        <div className="h1-wrapper">
+                            <h1 className="candy-cane">{this.state.winner} !!!!</h1>
+                            <h1 className="faker">{this.state.winner} !!!!</h1>
+                        </div>
                     </div>
-                    </div>
+                </div>
                 <div className="winner-gif">
+                <div className="winner-column-inner">
                     <img src={this.state.winnerGifSrc} />
                     {footerContent}
+                    </div>
                 </div>
             </div>
         )
