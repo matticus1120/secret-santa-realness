@@ -44,6 +44,45 @@
   text-shadow: none;
   margin: 0 auto;
   font-weight: bold;
+  text-shadow: // bevel effects with multiple text shadows
+    24px 20px 8px rgba(#fff,0.25),
+    18px 10px 6px rgba(#026374,0.39),
+    8px 6px 6px rgba(#000,0.57),
+    4px 4px 6px #fff,
+    0 0 6px #055f73;
+  margin: 0.125em 0;
+  position: relative;
+  
+  &::before,
+  &::after {
+    content: '';
+    font: inherit;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+  }
+  
+  &::before { // candy cane stripes
+    $size: 20px;
+    // Change this to any pattern
+    background: repeating-linear-gradient(-45deg,
+      #d5013f, #d5013f $size, 
+      #fff $size, #fff $size * 2
+    );
+    mix-blend-mode: overlay;
+  }
+  
+  &::after { // cover excess shadows that spill outside text
+    background: white;
+    content: 'candy';
+    color: black;
+    text-shadow: none;
+    mix-blend-mode: lighten;
+    bottom: -20px;
+  }
 	@include headingFont;
 	@include largeTabletMax {
 		    font-size: 60px;

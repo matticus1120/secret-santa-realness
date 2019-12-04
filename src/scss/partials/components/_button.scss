@@ -47,24 +47,29 @@
 	font-size: 27px;
 	position: relative;
 	margin:  13px;
-		&::before {
-			@extend %test;
-			bottom: -10px;
-			height: 10px;
-			width: 100%;
-			left: 8px;
-			transform: skewX(45deg);
-			background-color: #028223;
-		}
-		&::after {
-			@extend %test;
-			right: -8px;
-			height: 100%;
-			width: 10px;
-			bottom: -8px;
-			transform: skewY(45deg);
-			background-color: #028223;
-		}
+	-webkit-text-stroke-width: 3px;
+	-webkit-text-stroke-color: green;
+	background: transparent linear-gradient(172deg, #FF0000 0%, #FF00D8 100%) 0% 0% no-repeat padding-box;
+	border: solid 5px green;
+	border-radius: 0;
+	&::before {
+		@extend %test;
+		bottom: -10px;
+		height: 10px;
+		width: 100%;
+		left: 8px;
+		transform: skewX(45deg);
+		background-color: #028223;
+	}
+	&::after {
+		@extend %test;
+		right: -8px;
+		height: 100%;
+		width: 10px;
+		bottom: -8px;
+		transform: skewY(45deg);
+		background-color: #028223;
+	}
 	&:link, &:visited {
 		color: inherit;
 		text-decoration: none;	
@@ -98,6 +103,7 @@
 		font-size: 50px;
 		line-height: 60px;
 		padding: 10px 50px 19px;
+		border: solid 10px green;
 		cursor: url("../assets/img/tree.png"), auto;
 		&:link, &:visited {
 			color: #fff;
@@ -110,22 +116,22 @@
 			font-size: 90px;
 		}
 		&::before {
-			@extend %test;
-			bottom: -10px;
-			height: 10px;
-			width: 100%;
-			left: 8px;
+			bottom: -28px;
+			height: 18px;
+			width: calc(100% + 19px);
+			left: 0;
+			-webkit-transform: skewX(45deg);
 			transform: skewX(45deg);
-			background-color: darken(pink, 20%);
+			background-color: #E3D100;
 		}
 		&::after {
-			@extend %test;
-			right: -8px;
-			height: 100%;
-			width: 10px;
-			bottom: -8px;
+			right: -28px;
+			height: calc(100% + 21px);
+			width: 18px;
+			top: -2px;
+			-webkit-transform: skewY(45deg);
 			transform: skewY(45deg);
-			background-color: darken(pink, 30%);
+			background-color: #CEBE03;
 		}
 		&:active {
 			margin-left: 10px;
@@ -153,9 +159,9 @@
 
 	}
 	&-success {
-		background-color: $green;
+		// background-color: $green;
 		&:after, &:before {
-			background-color: red;
+			// background-color: red;
 		}
 	}
 	&--left {
