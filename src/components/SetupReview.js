@@ -35,7 +35,7 @@ const SetupReview = ({ readyForReview, submitSetup, setupValues }) => {
   return (
   <div className="setup-section">
     <div>
-      <h3>Are you a liar?</h3>
+      <h2>Are you a liar?</h2>
       <h4>Or is this information correct?</h4>
       <div className="">
 
