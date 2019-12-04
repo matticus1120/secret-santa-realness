@@ -1,7 +1,10 @@
-import React, { useReducer, useEffect } from "react";
+import React, { Component, useReducer, useEffect } from "react";
 import "./scss/style.scss";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+
+
+import StoreHelpers from './store/store-helpers';
 
 import { initialState, reducer, appStore } from "./store/reducer";
 
@@ -23,99 +26,124 @@ https://til.hashrocket.com/posts/z8cimdpghg-passing-props-down-to-react-router-r
  */
 
 
-function App() {
+// function App() {
+export default class App extends Component {
+  
+  constructor(props) {
+      super(props);
+      this.state = {
+        people: [],
+        reducedPeople: [],
+        doBonusRound: false,
+        currentWinner: ''
+      }
+  }
 
-    const [state, dispatch] = useReducer(reducer, initialState);
+  componentDidMount = () => {
+    var people = localStorage.getItem("people") ? JSON.parse(localStorage.getItem("people")) : [];
+    this.setState({
+        people: people
+    });
+  }
 
-    console.log('state', state);
+  handleSetupSubmit = (values) => {
 
+    const json = JSON.stringify(values.people);
+    localStorage.setItem("people", json);
 
-    /*
-    submit the entire setup form
-     */
-    const handleSetupSubmit = (values) => {
-        dispatch({
-            type: "SET_GAME_VALUES",
-            payload: values
-        });
-    }
+    console.log('values submit: ', values);
 
-    /*
-    set the round winner - no values passed
-     */
-    const handleSetWinner = (values) => {
-        dispatch({
-            type: "SET_WINNER"
-        });
-    }
+    this.setState({
+        people: values.people,
+        reducedPeople: values.people,
+        doBonusRound: values.doBonusRound
+    });
 
-    return (
-        <Router>
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <div className="collpase navbar-collapse">
-              <ul className="navbar-nav">
-                <li className="navbar-item">
-                  <Link to="/" className="nav-link">Welcome</Link>
-                </li>
-                <li className="navbar-item">
-                  <Link to="/instructions" className="nav-link">Instructions</Link>
-                </li>
-                <li className="navbar-item">
-                  <Link to="/setup" className="nav-link">Setup</Link>
-                </li>
-                <li className="navbar-item">
-                  <Link to="/get-ready" className="nav-link">GetReady</Link>
-                </li>
-                <li className="navbar-item">
-                  <Link to="/whos-up" className="nav-link">WhosUp</Link>
-                </li>
-                <li className="navbar-item">
-                  <Link to="/the-winner" className="nav-link">TheWinner</Link>
-                </li>
-                <li className="navbar-item">
-                  <Link to="/all-done" className="nav-link">AllDone</Link>
-                </li>
-                <li className="navbar-item">
-                  <Link to="/counter" className="nav-link">Counter</Link>
-                </li>
-                <li className="navbar-item">
-                  <a className="nav-link disabled">1 people</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-          <div className="page-wrapper">
+  }
 
-            <div className="container">
-            <div className="page-wrapper__inner">
-              <Route path="/" exact component={Welcome} />
-              <Route path="/counter" component={Counter} />
-              <Route path="/instructions" component={Instructions} />
-              <Route path="/setup" 
-                render={(routeProps) => (
-                    <Setup
-                      handleSetupSubmit={handleSetupSubmit}
-                    />
-                  )}
-              />
-              <Route path="/get-ready" component={GetReady} />
-              <Route path="/whos-up" component={WhosUp} />
-              <Route path="/the-winner" 
-                render={(routeProps) => (
-                    <TheWinner
-                      handleSetWinner={handleSetWinner}
-                      winner={state.winner}
-                      reducedPeople={state.reducedPeople}
-                      people={state.people}
-                    />
-                  )}
-              />
-              <Route path="/all-done" component={AllDone} />
+  handleSetWinner = () => {
+      let winningInfo = StoreHelpers.getWinnerReducedPeople(this.state.reducedPeople);
+      console.log('winningInfo', winningInfo);
+      var theWinner = winningInfo.winner;
+      console.log('theWinner', theWinner);
+      // initialState.winner = winningInfo.winner;
+      // initialState.reducedPeople = winningInfo.peopleReduced;
+      this.setState({
+        currentWinner: theWinner,
+        reducedPeople: winningInfo.reducedPeople
+      });
+  }
+
+   
+  render() {
+      return (
+          <Router>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+              <div className="collpase navbar-collapse">
+                <ul className="navbar-nav">
+                  <li className="navbar-item">
+                    <Link to="/" className="nav-link">Welcome</Link>
+                  </li>
+                  <li className="navbar-item">
+                    <Link to="/instructions" className="nav-link">Instructions</Link>
+                  </li>
+                  <li className="navbar-item">
+                    <Link to="/setup" className="nav-link">Setup</Link>
+                  </li>
+                  <li className="navbar-item">
+                    <Link to="/get-ready" className="nav-link">GetReady</Link>
+                  </li>
+                  <li className="navbar-item">
+                    <Link to="/whos-up" className="nav-link">WhosUp</Link>
+                  </li>
+                  <li className="navbar-item">
+                    <Link to="/the-winner" className="nav-link">TheWinner</Link>
+                  </li>
+                  <li className="navbar-item">
+                    <Link to="/all-done" className="nav-link">AllDone</Link>
+                  </li>
+                  <li className="navbar-item">
+                    <Link to="/counter" className="nav-link">Counter</Link>
+                  </li>
+                  <li className="navbar-item">
+                    <a className="nav-link disabled">1 people</a>
+                  </li>
+                </ul>
               </div>
-              </div>
-              </div>
-      </Router>
-    );
+            </nav>
+            <div className="page-wrapper">
+
+              <div className="container">
+              <div className="page-wrapper__inner">
+                <Route path="/" exact component={Welcome} />
+                <Route path="/counter" component={Counter} />
+                <Route path="/instructions" component={Instructions} />
+                <Route path="/setup" 
+                  render={(routeProps) => (
+                      <Setup
+                        handleSetupSubmit={this.handleSetupSubmit}
+                      />
+                    )}
+                />
+                <Route path="/get-ready" component={GetReady} />
+                <Route path="/whos-up" component={WhosUp} />
+                <Route path="/the-winner" 
+                  render={(routeProps) => (
+                      <TheWinner
+                        handleSetWinner={this.handleSetWinner}
+                        currentWinner={this.state.currentWinner}
+                        reducedPeople={this.state.reducedPeople}
+                        people={this.state.people}
+                      />
+                    )}
+                />
+                <Route path="/all-done" component={AllDone} />
+                </div>
+                </div>
+                </div>
+        </Router>
+      );
+      }
 }
 
 
@@ -124,4 +152,3 @@ function App() {
 
 
 
-export default App;

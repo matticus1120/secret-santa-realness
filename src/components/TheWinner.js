@@ -11,14 +11,22 @@ export default class TheWinner extends Component {
 
     constructor(props) {
         super(props);
+        // console.log('props', props);
         this.state = {
             loading: true,
             loadingTime: 3000,
-            reducedPeople: this.props.reducedPeople,
+            reducedPeople: [],
+            winner: false
         }
     }
 
     componentDidMount = () => {
+
+        console.log('componentDidMount', this.props);
+            this.setState({
+                reducedPeople: this.props.reducedPeople,
+                people: this.props.people,
+            })
 
         setTimeout(()=> {
             
@@ -26,6 +34,16 @@ export default class TheWinner extends Component {
 
         }, this.state.loadingTime);
 
+    }
+
+    componentDidUpdate =(props) => {
+        console.log('props', props);
+        if( props.reducedPeople.length != this.state.reducedPeople.length ) {
+            this.setState({
+                reducedPeople: props.reducedPeople,
+                winner: props.winner
+            })
+        }
     }
 
     setWinner = () => {
@@ -47,14 +65,14 @@ export default class TheWinner extends Component {
     }
 
     getWinnerContent = () => {
-        console.log('this.props', this.props);
-        var index = this.props.people.length - this.props.reducedPeople.length;
-        if( !this.props.reducedPeople.length ) {
+
+        // var index = this.state.people.length - this.state.reducedPeople.length;
+        if( !this.state.reducedPeople.length ) {
             return <div><h2>That's all!</h2></div>
         }
         return (
             <div>
-                <h2>The winner is {this.props.winner}</h2>
+                <h2>The winner is {this.state.winner}</h2>
                 <button className="btn btn-success" onClick={this.hanldeUpNext}>Who's next?</button>
                 {/*<p>{index} / {this.props.people.length}</p>*/}
             </div>

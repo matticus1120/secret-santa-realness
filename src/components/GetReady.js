@@ -4,9 +4,7 @@ import { initialState, reducer } from "../store/reducer";
 import {Link } from "react-router-dom";
 
 const GetReady = ({ submitPeopleCount }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  console.log('state', state);
+  // const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
     <div>
