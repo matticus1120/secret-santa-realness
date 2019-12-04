@@ -41,9 +41,13 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  &--counter {
+    min-height: initial;
+  }
 }
 .main {
   padding-bottom: 30px;
+  width: 100%;
 }
 
 input[type="text"],
@@ -83,7 +87,52 @@ input[type="number"] {
     opacity: 1;
   }
 }
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+
+.setup-section--review {
+  p {
+    opacity: 0;
+    transform: translateY(15px);
+    &.players {
+      transform: none;
+      opacity: 1;
+      margin-top: 30px;
+      // opacity: 0;
+      // animation: fadeInUp 0.2s linear 2s;
+      // animation-fill-mode: forwards;
+    }
+    &.bonus {
+      opacity: 0;
+      animation: fadeInUp 0.3s linear 2s;
+      animation-fill-mode: forwards;
+    }
+    &.jab {
+      opacity: 0;
+      animation: fadeInUp 0.3s linear 3.5s;
+      animation-fill-mode: forwards;
+    }
+  }
+  label {
+      opacity: 0;
+      animation: fadeInUp 0.3s linear 5s;
+      animation-fill-mode: forwards;
+  }
+  .cta-row {
+      opacity: 0;
+      animation: fadeInUp 0.3s linear 6.5s;
+      animation-fill-mode: forwards;
+  }
+}
 
 
 
@@ -126,7 +175,7 @@ width: 50%;
     animation-fill-mode: forwards;
     min-height: 30px;
     height: 100%;
-    min-height: 100vh;
+    height: 100vh;
     .winner-column-inner {
       align-items: center;
       h3 {

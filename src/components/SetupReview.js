@@ -33,21 +33,21 @@ const SetupReview = ({ readyForReview, submitSetup, setupValues }) => {
   var jab = getJab();
 
   return (
-  <div className="setup-section">
+  <div className="setup-section setup-section--review">
     <div>
       <h2>Are you a liar?</h2>
       <h4>Or is this information correct?</h4>
       <div className="">
 
         <div className="form-review">
-          <p><strong>The Players:</strong> Are {peopleNames} ready to party?</p>
-          <p><strong>Bonus round?</strong> {bonusRoundString}</p>
-          <p><strong>{jab}</strong></p>
+          <p className="players"><strong>The Players:<br /></strong> Are <em>{peopleNames}</em> ready to party?</p>
+          <p className="bonus"><strong>Bonus round?<br /></strong> {bonusRoundString}</p>
+          <p className="jab"><strong>{jab}</strong></p>
         </div>
 
         <div>
 
-        <h3>Are you ready to party?</h3>
+        <label>Are you ready to party?</label>
         <div className="cta-row">
           <button className="btn btn-success" onClick={submitSetup} >Ok Let’s Party</button>
           </div>

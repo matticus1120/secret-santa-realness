@@ -18,7 +18,7 @@ const SetupPeopleCounter = ({ submitPeopleCount }) => {
   };
 
   return (
-    <div className="setup-section">
+    <div className="setup-section setup-section--counter">
       <div className="form-row form-row--people-counter">
         <label htmlFor="people-counter">Number of Participants</label>
           <input

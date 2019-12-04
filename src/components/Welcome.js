@@ -12,7 +12,7 @@ export default class Welcome extends Component {
         return (
             <div className="main main--welcome">
                 <div className="hero">
-                    <h2>Goodbye, hat. So long, tiny papers. Hello, the future of gift exchange.</h2>
+                    <h2>Goodbye, hat. So long, tiny papers.<br/ > Hello, the future of gift exchange.</h2>
                     <div className="h1-wrapper">
                         <h1 className="candy-cane">Welcome to <br /><span>Secret Santa Realness</span></h1>
                         <h1 className="faker">Welcome to <br /><span>Secret Santa Realness</span></h1>

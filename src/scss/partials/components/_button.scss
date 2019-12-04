@@ -74,6 +74,11 @@
 		color: inherit;
 		text-decoration: none;	
 	}
+	&:hover, &:active {
+		transform:scale(1.02);
+		cursor: url("../assets/img/tree.png"), auto;
+	}
+
 	&.mobile-screen {
 		&:hover, &:active {
 			-webkit-tap-highlight-color: transparent;
@@ -159,9 +164,27 @@
 
 	}
 	&-success {
-		// background-color: $green;
-		&:after, &:before {
-			// background-color: red;
+		font-size: 30px;
+		line-height: 40px;
+		padding: 10px 50px 13px;
+		border: solid 10px green;
+		&::before {
+			bottom: -28px;
+			height: 18px;
+			width: calc(100% + 19px);
+			left: 0;
+			-webkit-transform: skewX(45deg);
+			transform: skewX(45deg);
+			background-color: #E3D100;
+		}
+		&::after {
+			right: -28px;
+			height: calc(100% + 21px);
+			width: 18px;
+			top: -2px;
+			-webkit-transform: skewY(45deg);
+			transform: skewY(45deg);
+			background-color: #CEBE03;
 		}
 	}
 	&--left {

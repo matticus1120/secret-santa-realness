@@ -112,7 +112,7 @@ export default class TheWinner extends Component {
     }
 
     setWinnerGif = (winner) => {
-        // getRandomGif();
+        this.getRandomGif(this.state.winner);
     }
 
     setWinner = () => {
@@ -143,6 +143,7 @@ export default class TheWinner extends Component {
         this.setState({
             loading: true,
         });
+        this.setWinnerGif(this.state.winner);
         setTimeout(() => {
 
             this.setBonusWinner();
