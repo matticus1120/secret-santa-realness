@@ -1,6 +1,10 @@
 import React, { Component, useReducer, useEffect } from "react";
 import { initialState, reducer } from "../store/reducer";
 
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+import StoreHelpers from '../store/store-helpers';
+
 import WhosUpLoading from './WhosUpLoading';
 
 function getSetWinners() {
@@ -11,70 +15,105 @@ export default class TheWinner extends Component {
 
     constructor(props) {
         super(props);
-        // console.log('props', props);
+
+        // All people keeps changing both variables, cheating like this
+        var allPeople = JSON.stringify(props.people);
+        var reducedPeople = props.people;
+
         this.state = {
             loading: true,
-            loadingTime: 3000,
-            reducedPeople: [],
-            winner: false
+            loadingTime: 2000,
+            peopleReduced: reducedPeople,
+            peopleLength: props.people.length,
+            winner: false,
+            lastRound: false,
+            allPeople: JSON.parse(allPeople),
+            doBonusRound: props.doBonusRound,
+            winnerIndex: 0
         }
+
     }
 
     componentDidMount = () => {
 
-        console.log('componentDidMount', this.props);
-            this.setState({
-                reducedPeople: this.props.reducedPeople,
-                people: this.props.people,
-            })
+        setTimeout(() => {
 
-        setTimeout(()=> {
-            
             this.setWinner();
 
         }, this.state.loadingTime);
 
     }
 
-    componentDidUpdate =(props) => {
-        console.reace('props', props);
-        if( props.reducedPeople.length != this.state.reducedPeople.length ) {
-            this.setState({
-                reducedPeople: props.reducedPeople,
-                winner: props.winner
-            })
-        }
+    handleSetWinner = () => {
+    	let peopleReduced = this.state.peopleReduced;
+        let winningInfo = StoreHelpers.getWinnerReducedPeople(peopleReduced);
+        let theWinner = winningInfo.winner;
+        this.setState({
+            winner: theWinner,
+            peopleReduced: winningInfo.peopleReduced,
+            lastRound: winningInfo.peopleReduced == 0,
+            winnerIndex: this.state.allPeople.length - peopleReduced.length
+        });
     }
 
     setWinner = () => {
         this.setState({
             loading: false,
         });
-        this.props.handleSetWinner();
+        this.handleSetWinner();
     }
 
-    hanldeUpNext= () => {
+    hanldeUpNext = () => {
         this.setState({
             loading: true,
         });
-        setTimeout(()=> {
-            
+        setTimeout(() => {
+
             this.setWinner();
 
         }, this.state.loadingTime);
     }
 
+    handleBonusRound = () => {
+        this.setState({
+            loading: true,
+        });
+        setTimeout(() => {
+
+            this.setBonusWinner();
+
+        }, this.state.loadingTime);
+    }
+
+    setBonusWinner = () => {
+        this.setState({
+            loading: false,
+        });
+        let winningInfo = StoreHelpers.getWinnerReducedPeople(this.state.allPeople);
+        let theWinner = winningInfo.winner;
+        this.setState({
+            winner: theWinner,
+            lastRound: true,
+            doBonusRound: false
+        });
+    }
+    _setBonusWinner = () => {
+    	// console.log('this.state.people', this.state.people);
+    	let winningInfo = StoreHelpers.getWinnerReducedPeople(this.state.people);
+        let theWinner = winningInfo.winner;
+        this.setState({
+            winner: theWinner,
+            lastRound: true,
+            doBonusRound: false
+        });
+    }
+
     getWinnerContent = () => {
 
-        // var index = this.state.people.length - this.state.reducedPeople.length;
-        if( !this.state.reducedPeople.length ) {
-            return <div><h2>That's all!</h2></div>
-        }
         return (
             <div>
                 <h2>The winner is {this.state.winner}</h2>
-                <button className="btn btn-success" onClick={this.hanldeUpNext}>Who's next?</button>
-                {/*<p>{index} / {this.props.people.length}</p>*/}
+                
             </div>
         )
     }
@@ -85,12 +124,53 @@ export default class TheWinner extends Component {
         )
     }
 
+    getNextButton = () => {
+    	return (
+    		<div>
+	    		<p> {this.state.winnerIndex} / {this.state.allPeople.length} </p>
+	    		<button className="btn btn-success" onClick={this.hanldeUpNext}>Who's next?</button>
+	    	</div>
+    	)
+    }
+
+    getWrapUp = () => {
+    	if( this.state.doBonusRound ) {
+    		return (
+    			<div className="start-bonus">
+    			<h3>Bonus Round</h3>
+    			<p>Doesn’t everyone look happy with their gift?</p>
+    				<button className="btn btn-success" onClick={this.handleBonusRound}>Turn Those Smiles Upside Down</button>
+    			</div>
+    		)
+    	}
+    	else {
+    		return (
+    			<div>
+	    			<h3>That's all!</h3>
+	    			<Link to="/all-done" className="btn btn-success">Wrap up...</Link>
+	    		</div>
+    		)
+    	}
+    }
+
+    getFooterContent() {
+    	return this.state.lastRound ? this.getWrapUp() : this.getNextButton();
+    }
+
     render() {
+        
         let content = this.state.loading ? this.getLoadingContent() : this.getWinnerContent();
+        let footerContent = this.state.loading ? '' : this.getFooterContent();
+
         return (
             <div>
                 {content}
+                {footerContent}
              </div>
         )
     }
 }
+
+
+
+

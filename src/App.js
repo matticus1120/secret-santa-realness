@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
-import StoreHelpers from './store/store-helpers';
+
 
 import { initialState, reducer, appStore } from "./store/reducer";
 
@@ -33,53 +33,31 @@ export default class App extends Component {
       super(props);
       this.state = {
         people: [],
-        reducedPeople: [],
         doBonusRound: false,
-        currentWinner: '',
-        brandNewValue: '',
-        winningInfo: {}
       }
   }
 
   componentDidMount = () => {
     var people = localStorage.getItem("people") ? JSON.parse(localStorage.getItem("people")) : [];
+    console.log('people storage ', people);
     this.setState({
-        people: people
+      people: people
     });
   }
 
   handleSetupSubmit = (values) => {
 
     const json = JSON.stringify(values.people);
+    let people = values.people;
     localStorage.setItem("people", json);
 
-    console.log('values submit: ', values);
-
     this.setState({
-        people: values.people,
-        reducedPeople: values.people,
+        people: people,
         doBonusRound: values.doBonusRound,
-        brandNewValue: ''
     });
 
   }
 
-  handleSetWinner = () => {
-      let winningInfo = StoreHelpers.getWinnerReducedPeople(this.state.reducedPeople);
-      console.log('winningInfo', winningInfo);
-      let theWinner = winningInfo.winner;
-      console.log('theWinner', typeof theWinner);
-      // initialState.winner = winningInfo.winner;
-      // initialState.reducedPeople = winningInfo.peopleReduced;
-      this.setState({
-        currentWinner: 'theWinner is shitty',
-        reducedPeople: winningInfo.reducedPeople,
-        brandNewValue: winningInfo.someWinner,
-        winningInfo: winningInfo
-      });
-  }
-
-   
   render() {
       return (
           <Router>
@@ -135,17 +113,21 @@ export default class App extends Component {
                 <Route path="/the-winner" 
                   render={(routeProps) => (
                       <TheWinner
-                        handleSetWinner={this.handleSetWinner}
-                        currentWinner={this.state.currentWinner}
-                        reducedPeople={this.state.reducedPeople}
                         people={this.state.people}
+                        doBonusRound={this.state.doBonusRound}
                         everything={this.state}
-                        brandNewValue={this.state.brandNewValue}
-                        winningInfo={this.state.winningInfo}
                       />
                     )}
                 />
-                <Route path="/all-done" component={AllDone} />
+
+                <Route path="/all-done" 
+                  render={(routeProps) => (
+                      <AllDone
+                        people={this.state.people}
+                      />
+                    )}
+                />
+
                 </div>
                 </div>
                 </div>
