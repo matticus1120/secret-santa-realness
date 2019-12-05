@@ -11,6 +11,7 @@ import SetupPeopleCounter from './SetupPeopleCounter';
 import SetupPersonInput from './SetupPersonInput';
 import SetupBonusRound from './SetupBonusRound';
 import SetupReview from './SetupReview';
+import SetupPlayMusic from './SetupPlayMusic';
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop) ;
 
@@ -24,13 +25,16 @@ export default class Setup extends Component {
             peopleAreSet: false,
             readyForReview: false,
             doBonusRound: false,
-            setupComplete: false
+            bonusIsSet: false,
+            setupComplete: false,
+            musicIsSet: false,
+            musicAnswer: false
         }
 
         this.mainRef = React.createRef();
         this.personForms = React.createRef();
         this.bonusRound = React.createRef(); 
-        this.bonusRound = React.createRef();
+        this.music = React.createRef();
         this.review = React.createRef();
 
 
@@ -55,6 +59,20 @@ export default class Setup extends Component {
         this.setState({ people: people });
     }
 
+    handlePlayMusic = (val) => {
+
+        this.setState({
+            musicAnswer: val,
+            musicIsSet: true,
+            readyForReview: true
+        });
+
+        setTimeout(()=> {
+            scrollToRef(this.review);
+        }, 400)
+
+    }
+
     submitPeopleNames = () =>{
         if( !this.state.people.length ) {
             return;
@@ -63,7 +81,7 @@ export default class Setup extends Component {
             peopleAreSet: true
         });
         setTimeout(()=> {
-            scrollToRef(this.bonusRound);
+            scrollToRef(this.music);
         }, 400)
     }
 
@@ -107,11 +125,12 @@ export default class Setup extends Component {
 
         this.setState({
             doBonusRound: doBonusRound,
-            readyForReview: true
+            bonusIsSet: true
+            // readyForReview: true
         });
 
         setTimeout(()=> {
-            scrollToRef(this.review);
+            scrollToRef(this.music);
         }, 400)
 
     }
@@ -159,6 +178,13 @@ export default class Setup extends Component {
                     <SetupBonusRound
                         peopleAreSet={this.state.peopleAreSet}
                         handleBonusRound={this.handleBonusRound}
+                    />
+                    </div>
+
+                <div className="setup-section-anchor" id="play-music" ref={this.music}>
+                    <SetupPlayMusic
+                        bonusIsSet={this.state.bonusIsSet}
+                        handlePlayMusic={this.handlePlayMusic}
                     />
                     </div>
 

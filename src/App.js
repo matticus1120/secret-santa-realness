@@ -17,6 +17,7 @@ import GetReady from './components/GetReady';
 import WhosUp from './components/WhosUp';
 import TheWinner from './components/TheWinner';
 import AllDone from './components/AllDone';
+import SongPlayer from './components/SongPlayer';
 
 
 import Counter from './components/Counter';
@@ -36,6 +37,7 @@ export default class App extends Component {
       this.state = {
         people: [],
         doBonusRound: false,
+        musicAnswer: false
       }
   }
 
@@ -56,6 +58,7 @@ export default class App extends Component {
     this.setState({
         people: people,
         doBonusRound: values.doBonusRound,
+        musicAnswer: values.musicAnswer
     });
 
   }
@@ -128,6 +131,10 @@ export default class App extends Component {
                         people={this.state.people}
                       />
                     )}
+                />
+
+                <SongPlayer 
+                  musicAnswer={this.state.musicAnswer}
                 />
 
                 </div>
