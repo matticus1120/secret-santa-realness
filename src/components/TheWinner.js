@@ -43,6 +43,9 @@ export default class TheWinner extends Component {
 
     }
 
+    /*
+    Make a request to the GIPHY API, set state.
+     */
     getRandomGif = (tag, forWinner = true) => {
         
         var refresh;
@@ -85,6 +88,9 @@ export default class TheWinner extends Component {
       
     }
 
+    /*
+    Set the initial winner
+     */
     componentDidMount = () => {
 
         this.getRandomGif('christmas', false);
@@ -97,6 +103,10 @@ export default class TheWinner extends Component {
 
     }
 
+    
+    /*
+    set the winner
+     */
     handleSetWinner = () => {
     	let peopleReduced = this.state.peopleReduced;
         let winningInfo = StoreHelpers.getWinnerReducedPeople(peopleReduced);
@@ -107,13 +117,12 @@ export default class TheWinner extends Component {
             lastRound: winningInfo.peopleReduced == 0,
             winnerIndex: this.state.allPeople.length - peopleReduced.length
         });
-        // this.getRandomGif(theWinner);
         this.getRandomGif(theWinner);
     }
 
-    setWinnerGif = (winner) => {
+   /* setWinnerGif = (winner) => {
         this.getRandomGif(this.state.winner);
-    }
+    }*/
 
     setWinner = () => {
         this.setState({
@@ -139,11 +148,15 @@ export default class TheWinner extends Component {
         }, this.state.loadingTime);
     }
 
+    /*
+    Handle the bonus round after completing the full round
+     */
     handleBonusRound = () => {
         this.setState({
             loading: true,
         });
-        this.setWinnerGif(this.state.winner);
+        // this.setWinnerGif(this.state.winner);
+        this.getRandomGif(this.state.winner);
         setTimeout(() => {
 
             this.setBonusWinner();
@@ -151,6 +164,10 @@ export default class TheWinner extends Component {
         }, this.state.loadingTime);
     }
 
+    /*
+    Set the bonus round by "faking" an actual round
+    and setting bonus to false
+     */
     setBonusWinner = () => {
         this.setState({
             loading: false,
@@ -163,17 +180,10 @@ export default class TheWinner extends Component {
             doBonusRound: false
         });
     }
-    _setBonusWinner = () => {
-    	// console.log('this.state.people', this.state.people);
-    	let winningInfo = StoreHelpers.getWinnerReducedPeople(this.state.people);
-        let theWinner = winningInfo.winner;
-        this.setState({
-            winner: theWinner,
-            lastRound: true,
-            doBonusRound: false
-        });
-    }
-
+    
+    /*
+    Get content for the winner screen
+     */
     getWinnerContent = () => {
 
         let footerContent = this.state.loading ? '' : this.getFooterContent();
@@ -197,7 +207,10 @@ export default class TheWinner extends Component {
             </div>
         )
     }
-
+    
+    /*
+    get the loading screen
+     */
     getLoadingContent = () => {
         return (
             <div className="winner-loading">
@@ -206,7 +219,10 @@ export default class TheWinner extends Component {
                 </div>
         )
     }
-
+    
+    /*
+    return the next button
+     */
     getNextButton = () => {
     	return (
     		<div className="winner-footer">
@@ -214,8 +230,11 @@ export default class TheWinner extends Component {
 	    		<button className="btn btn-success" onClick={this.hanldeUpNext}>Who's next?</button>
 	    	</div>
     	)
-    }
+    }   
 
+    /*
+    get the last screen - dependant on if there's a bonus round or not
+     */
     getWrapUp = () => {
     	if( this.state.doBonusRound ) {
     		return (
@@ -235,7 +254,10 @@ export default class TheWinner extends Component {
     		)
     	}
     }
-
+    
+    /*
+    get the footer content, dependent on if it's the next or final screen
+     */
     getFooterContent() {
     	return this.state.lastRound ? this.getWrapUp() : this.getNextButton();
     }
@@ -243,7 +265,6 @@ export default class TheWinner extends Component {
     render() {
         
         let content = this.state.loading ? this.getLoadingContent() : this.getWinnerContent();
-        // let footerContent = this.state.loading ? '' : this.getFooterContent();
 
         return (
             <div className="winner-content">
