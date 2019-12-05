@@ -8,6 +8,7 @@
     "node-sass": "^4.13.0",
     "querystringify": "^2.1.1",
     "react": "^16.8.6",
+    "react-audio-player": "^0.11.1",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.0.1"

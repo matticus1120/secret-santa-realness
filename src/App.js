@@ -41,6 +41,7 @@ export default class App extends Component {
 
   componentDidMount = () => {
     var people = localStorage.getItem("people") ? JSON.parse(localStorage.getItem("people")) : [];
+    console.log('people from storage ', people);
     this.setState({
       people: people
     });
