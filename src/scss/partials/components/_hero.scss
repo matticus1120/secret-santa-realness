@@ -23,4 +23,9 @@
 	&__content {
 
 	}
+	&--all-done {
+		p:last-child {
+			margin-bottom: 0;
+		}
+	}
 }

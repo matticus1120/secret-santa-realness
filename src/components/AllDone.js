@@ -18,7 +18,7 @@ const personJabs = [
     var randomPerson = people[ randomPersonNumber ];
     var randomJabNumber = Math.floor((Math.random() * personJabs.length) + 1) - 1;
     var randomJab = personJabs[ randomJabNumber ];
-    var personJab = randomJab.replace('[Name]', randomPerson);
+    var personJab = randomJab.replace('[Name]', 'Jordan');
     return personJab;
   }
 
@@ -33,20 +33,24 @@ export default class AllDone extends Component {
     render() {
         var jab = getJab(this.props.people);
         return (
-            <div className="main main--welcome">
-                <div className="h1-wrapper">
-                        <h1 className="candy-cane">Thanks for using Secret Santa Realness!</h1>
-                        <h1 className="faker">Thanks for using Secret Santa Realness!</h1>
-                </div>
-                <h3> The Internet’s First Ever* Fully Automated Holiday Party Gift-Exchange Name-Generator</h3>
-                <p><small><em>*Unverified</em></small></p>
-                <p>{jab}</p>
-                <div className="all-done-footer">
-                  <div className="cta-row">
-                    <a className="btn btn--big btn-success" href="#">View the case study</a>
+            <div className="main main--review all-done">
+              <div className="hero hero--all-done">
+                  <div className="h1-wrapper">
+                      <h1 className="candy-cane">Thanks for using <br />Secret Santa Realness!</h1>
+                      <h1 className="faker">Thanks for using <br />Secret Santa Realness!</h1>
                   </div>
+                  <p> The Internet’s First Ever* Fully Automated Holiday Party Gift-Exchange Name-Generator <br /><br />
+                  <small><em>*Unverified</em></small> </p>
+                  </div>
+                
+                <p className="all-done__jab">{jab}</p>
+                <div className="all-done__footer">
+                  <div className="cta-row">
+                    <a className="btn btn--big btn-success" href="#">Watch the making of!</a>
+                  </div>
+                  <h3 className="all-done__credit">Brought you you by <a href="#">Blackjet</a></h3>
                </div>
-               </div>
+            </div>
         )
     }
 }

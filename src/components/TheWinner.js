@@ -27,7 +27,7 @@ export default class TheWinner extends Component {
 
         this.state = {
             loading: true,
-            loadingTime: 3500,
+            loadingTime: 4500,
             peopleReduced: reducedPeople,
             peopleLength: props.people.length,
             winner: false,
@@ -53,7 +53,7 @@ export default class TheWinner extends Component {
             key: "P4WZK1y0inqnsvkQFPUJ3q1aaTrPFpQS",
             tag: tag,
             type: "random",
-            rating: "pg-13"
+            rating: "g"
         }
 
         // Giphy API URL
@@ -183,8 +183,8 @@ export default class TheWinner extends Component {
                 <div className="winner-left">
                     <div className="winner-column-inner">
                         <div className="h1-wrapper">
-                            <h1 className="candy-cane">{this.state.winner} !!!!</h1>
-                            <h1 className="faker">{this.state.winner} !!!!</h1>
+                            <h1 className="candy-cane">{this.state.winner}!!!!</h1>
+                            <h1 className="faker">{this.state.winner}!!!!</h1>
                         </div>
                     </div>
                 </div>
