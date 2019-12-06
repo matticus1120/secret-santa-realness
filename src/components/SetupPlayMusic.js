@@ -21,11 +21,10 @@ const SetupPlayMusic = ({ bonusIsSet, handlePlayMusic }) => {
   return (
     <div className="setup-section">
       <div>
-        <label>Would you like to play some holidys tunes along the way?</label>
+        <label>Would you like to play some holidays tunes along the way?</label>
         <div className = "_form-row">
           <button className="btn btn-success" onClick={setMusicFalse}>All is silent please.</button>
           <button className="btn btn-success" onClick={setMusicTrue}>yaaasssss.</button>
-          <button className="btn btn-success" onClick={setMusicNow}>Play it now please.</button>
         </div>
       </div>
     </div>

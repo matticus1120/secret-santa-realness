@@ -13,8 +13,7 @@ export default class Instructions extends Component {
                 <div className="hero">
                 <h2>How does it work? Read on.</h2>
                 <div className="h1-wrapper">
-                        <h1 className="candy-cane">How it Works</h1>
-                        <h1 className="faker">How it Works</h1>
+                        <h1>How it Works</h1>
                         </div>
                 <p>Yankee Swap, White Elephant and to a lesser extent Gifty Stealy, Secret Santa goes by many names, but the rules remain the same.</p>
                 <ol>

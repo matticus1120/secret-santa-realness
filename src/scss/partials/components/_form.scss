@@ -101,3 +101,11 @@ input[type="text"], input[type="email"],input[type="number"], textarea, .chosen-
 
 
 
+@include smallTabletMax {
+	.people-form__inputs .form-row {
+		    width: 100%;
+	}
+	label {
+		    font-size: 24px;
+	}
+}

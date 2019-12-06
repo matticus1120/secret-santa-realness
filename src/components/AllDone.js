@@ -46,9 +46,9 @@ export default class AllDone extends Component {
                 <p className="all-done__jab">{jab}</p>
                 <div className="all-done__footer">
                   <div className="cta-row">
-                    <a className="btn btn--big btn-success" href="#">Watch the making of!</a>
+                    <a className="btn btn--big btn-success" target="_blank" href="https://blackjet.ca/?utm_source=website&utm_medium=cta&utm_campaign=secret-santa">Watch the making of!</a>
                   </div>
-                  <h3 className="all-done__credit">Brought you you by <a href="#">Blackjet</a></h3>
+                  <h3 className="all-done__credit">Brought you you by <a target="_blank" href="https://blackjet.ca/?utm_source=website&utm_medium=cta&utm_campaign=secret-santa">Blackjet</a></h3>
                </div>
             </div>
         )

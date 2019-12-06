@@ -193,8 +193,7 @@ export default class TheWinner extends Component {
                 <div className="winner-left">
                     <div className="winner-column-inner">
                         <div className="h1-wrapper">
-                            <h1 className="candy-cane">{this.state.winner}!!!!</h1>
-                            <h1 className="faker">{this.state.winner}!!!!</h1>
+                            <h1>{this.state.winner}!!!!</h1>
                         </div>
                     </div>
                 </div>

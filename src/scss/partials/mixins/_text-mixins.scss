@@ -1,115 +1,116 @@
 /**
  * Heading Sizes
-*/
+ */
 
-/* Custom Selection Colour */
+ /* Custom Selection Colour */
 
-*::selection {
-  background: $theme-red;
-  color: white;
-}
+ *::selection {
+ 	background: $theme-red;
+ 	color: white;
+ }
 
-@mixin headingFont {
-	font-family: "Comic Sans", "Comic Sans MS", "Chalkboard", "ChalkboardSE-Regular", sans-serif;
-}
-@mixin bodyFont {
-	font-family: "Comic Sans", "Comic Sans MS", "Chalkboard", "ChalkboardSE-Regular", sans-serif;
-}
+ @mixin headingFont {
+ 	font-family: "Comic Sans", "Comic Sans MS", "Chalkboard", "ChalkboardSE-Regular", sans-serif;
+ }
+ @mixin bodyFont {
+ 	font-family: "Comic Sans", "Comic Sans MS", "Chalkboard", "ChalkboardSE-Regular", sans-serif;
+ }
 
-@mixin labelLine {
-	@include bodyFont;
-	font-weight: 700;
-	line-height: 40px;
-	font-size: 14px;
-	position: relative;
-	margin: 0;
-	padding-left: 30px;
-	&:before {
-		content: "";
-		width: 20px;
-		height: 2px;
-		background: $black;
-		position: absolute;
-		top: 22px;
-		left: 0;
-	}
-}
+ @mixin labelLine {
+ 	@include bodyFont;
+ 	font-weight: 700;
+ 	line-height: 40px;
+ 	font-size: 14px;
+ 	position: relative;
+ 	margin: 0;
+ 	padding-left: 30px;
+ 	&:before {
+ 		content: "";
+ 		width: 20px;
+ 		height: 2px;
+ 		background: $black;
+ 		position: absolute;
+ 		top: 22px;
+ 		left: 0;
+ 	}
+ }
 
-@mixin h1 {
-	font-size: 70px;
-	font-weight: 700;
-	line-height: 70px;
-	text-align: center;
-  display: inline-block;
-  text-shadow: none;
-  margin: 0 auto;
-  font-weight: bold;
-  
-
-	@include headingFont;
-	@include largeTabletMax {
-		    font-size: 60px;
-    line-height: 1;
-	}
-	@include smallTabletMax {
-		font-size: 45px;
-		line-height: 1;
-		margin: 0;
-		text-indent: 0;
-	}
-	@include mobileMax {
-		font-size: 30px;
-		line-height: 1;
-		text-indent: 0;
-		padding: 0;
-	}
-}
-@mixin heroHeading {
-	@include h1;
-}
-@mixin h2 {
-	font-size: 30px;
-	font-weight: 700;
-	line-height: 1;
-	text-align: center;
-	font-family: "Comic Sans MS", cursive, sans-serif;
-    text-shadow: 3px 3px 0 $orange;
-	@include headingFont;
-	@include largeTabletMax {
-		font-size: 20px;
-		line-height: 1;
-	}
-	@include smallTabletMax {
-		font-size: 17px;
-		line-height: 1;
-	}
-}
-@mixin h3 {
-	font-size: 20px;
-	font-weight: 500;
-	line-height: 1;
-	text-align: center;
-	@include bodyFont;
-	@include largeTabletMax {
-		font-size: 15px;
-		line-height: 1;
-	}
-	@include smallTabletMax {
-		font-size: 13px;
-		line-height: 1;
-	}
-}
-@mixin h4 {
-	font-size: 18px;
-	@include bodyFont;
-}
-@mixin h5 {
-	font-size: 12px;
-	font-weight: 700;
-	text-align: center;
-	@include headingFont;
-}
-@mixin span {
+ @mixin h1 {
+ 	font-size: 70px;
+ 	font-weight: 700;
+ 	line-height: 70px;
+ 	text-align: center;
+ 	display: inline-block;
+ 	text-shadow: none;
+ 	margin: 0 auto;
+ 	font-weight: bold;
+ 	margin-bottom: 120px;
+    line-height: 70px;
+    text-align: center;
+    margin: 20px auto 40px;
+    text-shadow: 5px 5px 5px rgb(255, 255, 255);
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: $gold;
+    color: $green;
+ 	@include headingFont;
+ 	@include largeTabletMax {
+ 		font-size: 60px;
+ 		line-height: 1;
+ 	}
+ 	@include smallTabletMax {
+ 		    font-size: 30px !important;
+    line-height: 1 !important;
+ 		margin: 0;
+ 		text-indent: 0;
+ 	}
+ 	
+ }
+ @mixin heroHeading {
+ 	@include h1;
+ }
+ @mixin h2 {
+ 	font-size: 30px;
+ 	font-weight: 700;
+ 	line-height: 1;
+ 	text-align: center;
+ 	font-family: "Comic Sans MS", cursive, sans-serif;
+ 	text-shadow: 3px 3px 0 $orange;
+ 	@include headingFont;
+ 	@include largeTabletMax {
+ 		font-size: 20px;
+ 		line-height: 1;
+ 	}
+ 	@include smallTabletMax {
+ 		font-size: 17px;
+ 		line-height: 1;
+ 	}
+ }
+ @mixin h3 {
+ 	font-size: 20px;
+ 	font-weight: 500;
+ 	line-height: 1;
+ 	text-align: center;
+ 	@include bodyFont;
+ 	@include largeTabletMax {
+ 		font-size: 15px;
+ 		line-height: 1;
+ 	}
+ 	@include smallTabletMax {
+ 		font-size: 13px;
+ 		line-height: 1;
+ 	}
+ }
+ @mixin h4 {
+ 	font-size: 18px;
+ 	@include bodyFont;
+ }
+ @mixin h5 {
+ 	font-size: 12px;
+ 	font-weight: 700;
+ 	text-align: center;
+ 	@include headingFont;
+ }
+ @mixin span {
 	// font-size: 36px;
 	// font-weight: 300;
 	// text-align: center;

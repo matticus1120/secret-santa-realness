@@ -75,7 +75,9 @@
 		text-decoration: none;	
 	}
 	&:hover, &:active {
-		transform:scale(1.02);
+		// transform:scale(1.02);
+		animation: buttonSwell 0.5s linear;
+		  animation-iteration-count: infinite;
 		cursor: url("../assets/img/tree.png"), auto;
 	}
 
@@ -246,6 +248,16 @@
 				top: calc(50% - 7px);
 			}
 		}
+	}
+	.btn-success {
+		    font-size: 21px;
+	}
+	.btn--big,
+	.btn-success {
+		    font-size: 21px;
+	-webkit-text-stroke-width: 2px;
+	    line-height: 25px;
+
 	}
 }
 

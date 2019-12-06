@@ -162,8 +162,7 @@ export default class Setup extends Component {
                 {this.renderRedirect()}
                 <h2>Santa Needs Some Answers</h2>
                  <div className="h1-wrapper">
-                        <h1 className="candy-cane">First, paperwork. Then, party.</h1>
-                        <h1 className="faker">First, paperwork. Then, party.</h1>
+                        <h1>First, paperwork. Then, party.</h1>
                         </div>
                 
                 <SetupPeopleCounter 
