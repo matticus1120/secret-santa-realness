@@ -1,4 +1,6 @@
 import React, { Component, useReducer, useEffect } from "react";
+import ReactGA from 'react-ga';
+
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -26,6 +28,7 @@ import Counter from './components/Counter';
 /*
 pass state to route
 https://til.hashrocket.com/posts/z8cimdpghg-passing-props-down-to-react-router-route
+https://github.com/ReactTraining/react-router/issues/3554
  */
 
 
@@ -40,7 +43,10 @@ export default class App extends Component {
         musicAnswer: false
       }
   }
-
+  initializeReactGA = () =>{
+    ReactGA.initialize('UA-123791717-1');
+    ReactGA.pageview('/homepage');
+}
   componentDidMount = () => {
     var people = localStorage.getItem("people") ? JSON.parse(localStorage.getItem("people")) : [];
     console.log('people from storage ', people);
