@@ -36,8 +36,7 @@ export default class AllDone extends Component {
             <div className="main main--review all-done">
               <div className="hero hero--all-done">
                   <div className="h1-wrapper">
-                      <h1 className="candy-cane">Thanks for using <br />Secret Santa Realness!</h1>
-                      <h1 className="faker">Thanks for using <br />Secret Santa Realness!</h1>
+                      <h1>Thanks for using <br />Secret Santa Realness!</h1>
                   </div>
                   <p> The Internet’s First Ever* Fully Automated Holiday Party Gift-Exchange Name-Generator <br /><br />
                   <small><em>*Unverified</em></small> </p>
