@@ -24,6 +24,14 @@ import SongPlayer from './components/SongPlayer';
 
 import Counter from './components/Counter';
 
+import createHistory from 'history/createBrowserHistory'
+
+const history = createHistory()
+history.listen(location => {
+  ReactGA.set({ page: location.pathname })
+  ReactGA.pageview(location.pathname)
+})
+
 
 /*
 pass state to route
@@ -43,13 +51,14 @@ export default class App extends Component {
         musicAnswer: false
       }
   }
-  initializeReactGA = () =>{
+/*  initializeReactGA = () =>{
     ReactGA.initialize('UA-123791717-1');
     ReactGA.pageview('/homepage');
-}
+}*/
   componentDidMount = () => {
     var people = localStorage.getItem("people") ? JSON.parse(localStorage.getItem("people")) : [];
-    console.log('people from storage ', people);
+    // console.log('people from storage ', people);
+    ReactGA.pageview(window.location.pathname)
     this.setState({
       people: people
     });
