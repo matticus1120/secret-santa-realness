@@ -30,6 +30,8 @@ const SetupReview = ({ readyForReview, submitSetup, setupValues }) => {
     return personJab;
   }
 
+  const musicString =  setupValues != 'no' ? "Play some (funky) music.": "Silence is golden.";
+
   var jab = getJab();
 
   return (
@@ -42,6 +44,7 @@ const SetupReview = ({ readyForReview, submitSetup, setupValues }) => {
         <div className="form-review">
           <p className="players"><strong>The Players:<br /></strong> Are <em>{peopleNames}</em> ready to party?</p>
           <p className="bonus"><strong>Bonus round?<br /></strong> {bonusRoundString}</p>
+          <p className="music"><strong>Play some music?<br /></strong> {musicString}</p>
           <p className="jab"><strong>{jab}</strong></p>
         </div>
 

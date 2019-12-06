@@ -122,9 +122,14 @@ input[type="number"] {
 			animation-fill-mode: forwards;
 		}
 
-		&.jab {
+		&.music {
 			opacity: 0;
 			animation: fadeInUp 0.3s linear 3.5s;
+			animation-fill-mode: forwards;
+		}
+		&.jab {
+			opacity: 0;
+			animation: fadeInUp 0.3s linear 5s;
 			animation-fill-mode: forwards;
 		}
 	}
