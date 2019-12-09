@@ -1,0 +1,95 @@
+$starburst-size: 6.5em !default;
+$starburst-padding: 1.5em !default;
+$starburst-font-size: 1em !default;
+$starburst-bg: $gold !default;
+
+
+.starburst-wrapper {
+	position: absolute;
+	right: 0;
+	top: 0;
+	transform: rotate(21deg);
+	position: fixed;
+	right: 80px;
+	top: 0;
+}
+
+.starburst{
+	position: relative; /* Context */
+	top: 2.5em;
+	left: 2.5em;
+	transform: rotate(-45deg);
+
+	&,
+	&:before,
+	&:after,
+	&-body,
+	&-body:before,
+	&-body:after{
+		height: $starburst-size;
+		width: $starburst-size;
+		background: $starburst-bg;
+		box-sizing: initial;
+	}
+
+	&:before,
+	&:after,
+	&-body:before,
+	&-body:after{
+		content: "";
+		position: absolute;
+	}
+
+	&:before,
+	&:after{
+		top: 0;
+		left: 0;
+	}
+
+	&:before{
+		transform: rotate(-30deg);
+	}
+
+	&:after{
+		transform: rotate(-15deg);
+	}
+
+	&-body{
+		padding: $starburst-padding 0em;
+		height: $starburst-size - ($starburst-padding * 2); /* height minus padding */
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		transform: rotate(45deg);
+		z-index: 1; /* important so the text shows up */
+
+		&:before{
+			top: 0;
+			left: 0;
+			transform: rotate(60deg);
+		}
+
+		&:after{
+			top: 0;
+			left: 0;
+			transform: rotate(75deg);
+		}
+
+		span{
+			position: relative;
+			z-index: 100;
+			display: block;
+			text-align: center;
+			color: rgba(#fff, .6);
+			font: $starburst-font-size/1.4 Sans-Serif;
+			text-transform: uppercase;
+
+			&.starburst-main{
+				font-weight: bold;
+				font-size: ($starburst-font-size * 1.05);
+				line-height: 1;
+				color: #fff;
+			}
+		}
+	}
+}

@@ -32,6 +32,32 @@ body {
 	}
 }
 
+.main--welcome {
+	.site-loader-outer {
+		animation: fadeOut 1s;
+		animation-fill-mode: forwards;
+		animation-delay: 6s;
+		z-index: 5;
+		.credit {
+			    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: red;
+    bottom: 90px;
+    text-align: right;
+    right: 80px;
+		}
+	}
+	.site-main-intro {
+		opacity: 0;
+		position: relative;
+		z-index: 10;
+		animation: fadeIn 1s;
+		animation-fill-mode: forwards;
+		animation-delay: 6s;
+	}
+}
+
 
 
 
@@ -52,6 +78,49 @@ body {
 .main {
 	padding-bottom: 30px;
 	width: 100%;
+	&--setup {
+		background-image: url(/static/media/santa-two.6f86d435.jpeg);
+		background-size: 400%;
+		background-position: center;
+		background-attachment: fixed;
+		padding: 60px 0;
+	}
+	&--welcome {
+		padding-top: 90px;
+	}
+	&--is-winner-loading {
+		background: repeating-radial-gradient(circle at top left, cyan, yellow 2em, magenta 4em, cyan 6em), repeating-radial-gradient(circle at bottom left, cyan, yellow 2em, magenta 4em, cyan 6em), repeating-radial-gradient(circle at top right, cyan, yellow 2em, magenta 4em, cyan 6em), repeating-radial-gradient(circle at bottom right, cyan, yellow 2em, magenta 4em, cyan 6em);
+		background-blend-mode: multiply;
+	}
+	&--is-winner-announced {
+		background-image:
+		repeating-linear-gradient(
+			90deg,
+			firebrick,
+			firebrick 20px,
+			beige 0,
+			beige 25px,
+			forestgreen 0,
+			forestgreen 35px,
+			gold 0,
+			gold 40px,
+			crimson 0,
+			crimson 60px
+			),
+		repeating-linear-gradient(
+			firebrick,
+			firebrick 20px,
+			beige 0,
+			beige 25px,
+			forestgreen 0,
+			forestgreen 35px,
+			gold 0,
+			gold 40px,
+			crimson 0,
+			crimson 60px
+			);
+		background-blend-mode: multiply;
+	}
 }
 
 input[type="text"],
@@ -109,7 +178,7 @@ input[type="number"] {
 	p {
 		opacity: 0;
 		transform: translateY(15px);
-
+		text-shadow: 1px 1px 1px $red;
 		&.players {
 			transform: none;
 			opacity: 1;
@@ -213,14 +282,47 @@ input[type="number"] {
 
 		img {
 			width: 100%;
-			box-shadow: 3px 4px 28px 18px rgba(255, 255, 255, 0.6705882352941176);
+			box-shadow: 3px 4px 8px 8px rgba(255, 255, 255, 0.4)
 		}
+	}
+}
+
+.site-loader-outer {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background: red;
+	z-index: 100;
+	img {
+		position: fixed;
+		height: 100%;
+		width: 100%;
+		top: 0;
 	}
 }
 
 .all-done-footer {
 }
 
+
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeOut {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
 
 
 .all-done {

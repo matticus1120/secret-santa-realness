@@ -28,6 +28,7 @@ export default class TheWinner extends Component {
         this.state = {
             loading: true,
             loadingTime: 4500,
+            // loadingTime: 94500,
             peopleReduced: reducedPeople,
             peopleLength: props.people.length,
             winner: false,
@@ -265,10 +266,19 @@ export default class TheWinner extends Component {
         
         let content = this.state.loading ? this.getLoadingContent() : this.getWinnerContent();
 
+        var outerClasses = 'main main--winner ';
+    outerClasses += this.state.loading ? 'main--is-winner-loading' : 'main--is-winner-announced';
+
+
+
         return (
-            <div className="winner-content">
-                {content}
-             </div>
+            <div className={outerClasses}>
+                <div className="winner-content">
+                    <div className="container">
+                        {content}
+                    </div>
+                 </div>
+            </div>
         )
     }
 }

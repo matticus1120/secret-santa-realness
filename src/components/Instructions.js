@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+import StarBurst from './StarBurst';
 export default class Instructions extends Component {
 
     constructor(props) {
@@ -9,7 +10,8 @@ export default class Instructions extends Component {
 
     render() {
         return (
-            <div className="main main--welcome">
+            <div className="main main--instructions">
+            <StarBurst />
                 <div className="hero">
                 <h2>How does it work? Read on.</h2>
                 <div className="h1-wrapper">

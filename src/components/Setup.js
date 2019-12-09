@@ -13,6 +13,8 @@ import SetupBonusRound from './SetupBonusRound';
 import SetupReview from './SetupReview';
 import SetupPlayMusic from './SetupPlayMusic';
 
+import StarBurst from './StarBurst';
+
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop) ;
 
 export default class Setup extends Component {
@@ -157,45 +159,48 @@ export default class Setup extends Component {
         this.review = React.createRef();*/
 
         return (
-            <div className="main main--welcome" ref={this.mainRef}>
-                <div className="hero">
-                {this.renderRedirect()}
-                <h2>Santa Needs Some Answers</h2>
-                 <div className="h1-wrapper">
-                        <h1>First, paperwork. Then, party.</h1>
+            <div className="main main--setup" ref={this.mainRef}>
+            <StarBurst />
+            <div className="container">
+                    <div className="hero">
+                    {this.renderRedirect()}
+                    <h2>Santa Needs Some Answers</h2>
+                     <div className="h1-wrapper">
+                            <h1>First, paperwork. Then, party.</h1>
+                            </div>
+                    
+                    <SetupPeopleCounter 
+                        submitPeopleCount={this.handlePeopleCount}
+                    />
+
+                    <div className="setup-section-anchor" id="person-forms" ref={this.personForms}>
+                        {personForm}
+                    </div>
+
+                    <div className="setup-section-anchor" id="bonus-round" ref={this.bonusRound}>
+                        <SetupBonusRound
+                            peopleAreSet={this.state.peopleAreSet}
+                            handleBonusRound={this.handleBonusRound}
+                        />
                         </div>
-                
-                <SetupPeopleCounter 
-                    submitPeopleCount={this.handlePeopleCount}
-                />
 
-                <div className="setup-section-anchor" id="person-forms" ref={this.personForms}>
-                    {personForm}
-                </div>
+                    <div className="setup-section-anchor" id="play-music" ref={this.music}>
+                        <SetupPlayMusic
+                            bonusIsSet={this.state.bonusIsSet}
+                            handlePlayMusic={this.handlePlayMusic}
+                        />
+                        </div>
 
-                <div className="setup-section-anchor" id="bonus-round" ref={this.bonusRound}>
-                    <SetupBonusRound
-                        peopleAreSet={this.state.peopleAreSet}
-                        handleBonusRound={this.handleBonusRound}
-                    />
+                    <div className="setup-section-anchor" id="review" ref={this.review}>
+                        <SetupReview
+                            readyForReview={this.state.readyForReview}
+                            submitSetup={this.handleSubmitSetup}
+                            setupValues={this.state}
+                        />
                     </div>
 
-                <div className="setup-section-anchor" id="play-music" ref={this.music}>
-                    <SetupPlayMusic
-                        bonusIsSet={this.state.bonusIsSet}
-                        handlePlayMusic={this.handlePlayMusic}
-                    />
-                    </div>
-
-                <div className="setup-section-anchor" id="review" ref={this.review}>
-                    <SetupReview
-                        readyForReview={this.state.readyForReview}
-                        submitSetup={this.handleSubmitSetup}
-                        setupValues={this.state}
-                    />
-                </div>
-
-             </div>
+                 </div>
+                 </div>
              </div>
         )
     }
