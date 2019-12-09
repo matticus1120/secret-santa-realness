@@ -3,6 +3,18 @@ $starburst-padding: 1.5em !default;
 $starburst-font-size: 1em !default;
 $starburst-bg: $gold !default;
 
+@keyframes spin {
+	0% {
+		transform: rotate(-45deg);
+	}
+	50% {
+		transform: rotate(-121deg);
+	}
+	100% {
+		transform: rotate(-45deg);
+	}
+}
+
 
 .starburst-wrapper {
 	position: absolute;
@@ -19,6 +31,11 @@ $starburst-bg: $gold !default;
 	top: 2.5em;
 	left: 2.5em;
 	transform: rotate(-45deg);
+	&:hover {
+		animation: spin 1s;
+		animation-iteration-count: infinite;
+		animation-fill-mode: forwards;
+	}
 
 	&,
 	&:before,

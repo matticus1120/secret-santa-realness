@@ -38,7 +38,7 @@ export default class Welcome extends Component {
             <div className="main main--welcome">
             <div className="site-loader-outer">
                     <img className="site-loader" src="https://media.giphy.com/media/KDH9hJ2mSEUYU/source.gif" />
-                    <p className="credit">Credit: <a href="https://giphy.com/gifs/santa-christmas-wave-KDH9hJ2mSEUYU" target="_blank">giphy</a></p>
+                    <p className="credit">Img Credit: <a href="https://giphy.com/gifs/santa-christmas-wave-KDH9hJ2mSEUYU" target="_blank">giphy</a></p>
                     </div>
                     {content}
             </div>
