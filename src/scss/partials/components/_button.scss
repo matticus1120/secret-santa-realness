@@ -188,6 +188,10 @@
 			transform: skewY(45deg);
 			background-color: #CEBE03;
 		}
+		@include smallTabletMax {
+			padding-left: 20px;
+			padding-right: 20px;
+		}
 	}
 	&--left {
 		padding-left: 51px;

@@ -56,9 +56,9 @@ export default class Setup extends Component {
     }
     
     setPersonName = (personName, personIndex) => {
-        var people = this.state.people;
-        people[personIndex] = personName;
-        this.setState({ people: people });
+        let tempPeople = this.state.people;
+        tempPeople[personIndex] = personName;
+        this.setState({ people: tempPeople });
     }
 
     handlePlayMusic = (val) => {
@@ -140,8 +140,11 @@ export default class Setup extends Component {
     handleSubmitSetup = () => {
         this.setState({
             setupComplete: true
-        })
-        this.props.handleSetupSubmit( this.state );
+        });
+        let tempState = this.state;
+        tempState.allPeople = tempState.people;
+        // this.props.handleSetupSubmit( this.state );
+        this.props.handleSetupSubmit( tempState );
     }
 
     renderRedirect = () => {

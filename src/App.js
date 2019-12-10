@@ -55,8 +55,8 @@ export default class App extends Component {
 
   handleSetupSubmit = (values) => {
 
-    const json = JSON.stringify(values.people);
-    let people = values.people;
+    const json = JSON.stringify(values.allPeople);
+    let people = values.allPeople;
     localStorage.setItem("people", json);
 
     this.setState({
@@ -105,6 +105,7 @@ export default class App extends Component {
                   render={(routeProps) => (
                       <AllDone
                         people={this.state.people}
+                        everything={this.state}
                       />
                     )}
                 />

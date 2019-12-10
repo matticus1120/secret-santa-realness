@@ -33,20 +33,21 @@ body {
 }
 
 .main--welcome {
+	padding-top: 90px;
 	.site-loader-outer {
 		animation: fadeOut 1s;
 		animation-fill-mode: forwards;
 		animation-delay: 6s;
 		z-index: 5;
 		.credit {
-			    position: absolute;
-			    font-size: 13px;
-    bottom: 0;
-    width: 100%;
-    color: red;
-    bottom: 90px;
-    text-align: right;
-    right: 80px;
+			position: absolute;
+			font-size: 13px;
+			bottom: 0;
+			width: 100%;
+			color: red;
+			bottom: 90px;
+			text-align: right;
+			right: 80px;
 		}
 	}
 	.site-main-intro {
@@ -57,9 +58,30 @@ body {
 		animation-fill-mode: forwards;
 		animation-delay: 6s;
 	}
+
+	@include smallTabletMax {
+	}
 }
 
-
+@include smallTabletMax {
+	.main--instructions,
+	.main--welcome,
+	.main--setup {
+		padding-top: 0;
+		min-height: 100vh;
+		.hero {
+			padding-top: 150px;
+		}
+	}
+	.main--setup {
+		.hero {
+			padding-top: 80px;
+		}
+	}
+	.main--winner {
+		min-height: 100vh;
+	}
+}
 
 
 /**
@@ -88,11 +110,15 @@ body {
 		min-height: 100vh;
 	}
 	&--welcome {
-		padding-top: 90px;
+		
 	}
 	&--is-winner-loading {
 		background: repeating-radial-gradient(circle at top left, cyan, yellow 2em, magenta 4em, cyan 6em), repeating-radial-gradient(circle at bottom left, cyan, yellow 2em, magenta 4em, cyan 6em), repeating-radial-gradient(circle at top right, cyan, yellow 2em, magenta 4em, cyan 6em), repeating-radial-gradient(circle at bottom right, cyan, yellow 2em, magenta 4em, cyan 6em);
 		background-blend-mode: multiply;
+		height: 100vh;
+		h2 {
+			margin-top: 20px;
+		}
 	}
 	&--is-winner-announced {
 		background-image:
@@ -222,7 +248,7 @@ input[type="number"] {
 
 .winner-loading {
 	img {
-		min-height: calc(100vh - 130px);
+		height: calc(100vh - 130px);
 		margin-top: 20px;
 	}
 }
@@ -394,7 +420,10 @@ input[type=number] {
 		.winner-left {
 			width: 100%;
 			min-height: auto;
-			margin: 30px;
+			margin: 30px 0;
+			h1 {
+				font-size: 50px !important;
+			}
 		}
 
 		.winner-column-inner {

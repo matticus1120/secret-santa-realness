@@ -44,10 +44,10 @@ input[type="text"], input[type="email"],input[type="number"], textarea, .chosen-
 	}
 	
 	&:focus {
-	outline: none;
-    border: solid 3px #028223;
-    box-shadow: 7px 7px 0px green;
-    color: #000000;
+		outline: none;
+		border: solid 3px #028223;
+		box-shadow: 7px 7px 0px green;
+		color: #000000;
 	}
 }
 
@@ -56,6 +56,11 @@ input[type="text"], input[type="email"],input[type="number"], textarea, .chosen-
 .cta-row {
 	text-align: center;
 	width: 100%;
+	@include smallTabletMax {
+		padding-left: 20px;
+		padding-right: 20px;
+		padding-bottom: 30px;
+	}
 }
 
 .form-row {
@@ -73,15 +78,15 @@ input[type="text"], input[type="email"],input[type="number"], textarea, .chosen-
 		}
 	}
 }
-	label {
-		display: block;
-		margin-bottom: .5rem;
-		font-size: 40px;
-		color: $green;
-		text-shadow: 1px 1px 1px white;
-		text-transform: none;
-		font-weight: bold;
-	}
+label {
+	display: block;
+	margin-bottom: .5rem;
+	font-size: 40px;
+	color: $green;
+	text-shadow: 1px 1px 1px white;
+	text-transform: none;
+	font-weight: bold;
+}
 
 .people-form {
 	&__inputs {
@@ -104,9 +109,9 @@ input[type="text"], input[type="email"],input[type="number"], textarea, .chosen-
 
 @include smallTabletMax {
 	.people-form__inputs .form-row {
-		    width: 100%;
+		width: 100%;
 	}
 	label {
-		    font-size: 24px;
+		font-size: 24px;
 	}
 }

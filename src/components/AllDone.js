@@ -18,7 +18,7 @@ const personJabs = [
     var randomPerson = people[ randomPersonNumber ];
     var randomJabNumber = Math.floor((Math.random() * personJabs.length) + 1) - 1;
     var randomJab = personJabs[ randomJabNumber ];
-    var personJab = randomJab.replace('[Name]', 'Jordan');
+    var personJab = randomJab.replace('[Name]', randomPerson);
     return personJab;
   }
 
@@ -28,10 +28,22 @@ export default class AllDone extends Component {
 
     constructor(props) {
         super(props);
+        // console.log('props', props);
+        var jsonPeople = localStorage.getItem("people");
+        console.log('jsonPeople', jsonPeople);
+        var allPeople = JSON.parse(jsonPeople);
+        console.log('allPeople', allPeople);
+        this.state = {
+          people: allPeople
+        }
+    }
+
+    componentDidMount = () => {
+      console.log(this.props);
     }
 
     render() {
-        var jab = getJab(this.props.people);
+        var jab = getJab(this.state.people);
         return (
             <div className="main main--review all-done">
               <div className="hero hero--all-done">

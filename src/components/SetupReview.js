@@ -30,7 +30,9 @@ const SetupReview = ({ readyForReview, submitSetup, setupValues }) => {
     return personJab;
   }
 
-  const musicString =  setupValues != 'no' ? "Play some (funky) music.": "Silence is golden.";
+  console.log('setupValues', setupValues);
+
+  const musicString =  setupValues.musicAnswer != 'no' ? "Play some (funky) music.": "Silence is golden.";
 
   var jab = getJab();
 

@@ -24,6 +24,12 @@ $starburst-bg: $gold !default;
 	position: fixed;
 	right: 80px;
 	top: 0;
+	@include smallTabletMax {
+		position: absolute;
+		right: 34px;
+		top: -27px;
+		transform: rotate(21deg) scale(0.8);
+	}
 }
 
 .starburst{
