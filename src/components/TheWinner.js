@@ -27,7 +27,7 @@ export default class TheWinner extends Component {
 
         this.state = {
             loading: true,
-            loadingTime: 4500,
+            loadingTime: 5500,
             // loadingTime: 94500,
             peopleReduced: reducedPeople,
             peopleLength: props.people.length,
