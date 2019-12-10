@@ -1,22 +1,29 @@
-import React, { useReducer, useEffect } from "react";
-import { initialState, reducer } from "../store/reducer";
+import React, {Component} from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import {Link } from "react-router-dom";
+export default class GetReady extends Component {
 
-const GetReady = ({ submitPeopleCount }) => {
-  // const [state, dispatch] = useReducer(reducer, initialState);
+    constructor(props) {
+        super(props);
+    }
 
-  return (
-    <div className="get-ready">
+    componentDidMount = () => {
+        this.props.setRoutePageview('/get-ready');
+    }
 
-     <h3>Who’s Up First?</h3>
-     
-     <img src="/assets/img/loader-santa.gif" />
-     <div className="cta-row">
-     <Link className="btn btn-success" to='/the-winner'>Click Here to Find Out</Link>
-     </div>
-    </div>
-  );
-};
+    render() {
+        return (
 
-export default GetReady;
+          <div className="get-ready">
+
+             <h3>Who’s Up First?</h3>
+             
+             <img src="/assets/img/loader-santa.gif" />
+             <div className="cta-row">
+              <Link className="btn btn-success" to='/the-winner'>Click Here to Find Out</Link>
+             </div>
+          </div>
+        );
+    }
+}
+

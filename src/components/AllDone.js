@@ -28,18 +28,18 @@ export default class AllDone extends Component {
 
     constructor(props) {
         super(props);
-        // console.log('props', props);
         var jsonPeople = localStorage.getItem("people");
-        console.log('jsonPeople', jsonPeople);
         var allPeople = JSON.parse(jsonPeople);
-        console.log('allPeople', allPeople);
         this.state = {
           people: allPeople
         }
     }
 
     componentDidMount = () => {
-      console.log(this.props);
+      this.props.setRoutePageview('/all-done');
+      this.props.setWrapUpStats({
+        peopleLength: this.state.people.length
+      });
     }
 
     render() {
@@ -57,9 +57,9 @@ export default class AllDone extends Component {
                 <p className="all-done__jab">{jab}</p>
                 <div className="all-done__footer">
                   <div className="cta-row">
-                    <a className="btn btn--big btn-success" target="_blank" href="https://blackjet.ca/santa/?utm_source=website&utm_medium=cta&utm_campaign=secret-santa">Watch the making of!</a>
+                    <a className="btn btn--big btn-success" target="_blank" href="https://blackjet.ca/santa/?utm_source=website-starburst&utm_medium=cta&utm_campaign=secret-santa">Watch the making of!</a>
                   </div>
-                  <h3 className="all-done__credit">Brought you you by <a target="_blank" href="https://blackjet.ca/?utm_source=website&utm_medium=cta&utm_campaign=secret-santa">Blackjet</a></h3>
+                  <h3 className="all-done__credit">Brought you you by <a target="_blank" href="https://blackjet.ca/?utm_source=website-wrapup&utm_medium=cta&utm_campaign=secret-santa">Blackjet</a></h3>
                </div>
             </div>
         )

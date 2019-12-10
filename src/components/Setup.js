@@ -47,6 +47,10 @@ export default class Setup extends Component {
         }, 300);
     }
 
+    componentDidMount = () => {
+        this.props.setRoutePageview('/setup');
+    }
+
     handlePeopleCount = (count) => {
         this.setState({ peopleCount: parseInt(count) });
 

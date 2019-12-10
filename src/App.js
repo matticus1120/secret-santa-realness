@@ -33,6 +33,9 @@ import Counter from './components/Counter';
 // })
 
 
+ReactGA.initialize('UA-131051020-1');
+// 
+
 /*
 pass state to route
 https://til.hashrocket.com/posts/z8cimdpghg-passing-props-down-to-react-router-route
@@ -50,6 +53,11 @@ export default class App extends Component {
         doBonusRound: false,
         musicAnswer: false
       }
+      ReactGA.pageview(window.location.pathname + window.location.search);
+  }
+
+  setRoutePageview = (pageViewTitle) => {
+    ReactGA.pageview( pageViewTitle );
   }
 
 
@@ -67,8 +75,23 @@ export default class App extends Component {
 
   }
 
+  setWrapUpStats = (stats) => {
+    var peopleLength = stats.peopleLength.toString();
+    ReactGA.event({
+      category: 'Game Play',
+      action: 'Game Completion',
+      label: 'Complete'
+    });
+    ReactGA.event({
+      category: 'Game Play',
+      action: 'Game People Count',
+      label: peopleLength
+    });
+
+  }
+
   yourHandler = () => {
-    console.log('changing');
+    // console.log('changing');
   }
 
   render() {
@@ -81,22 +104,48 @@ export default class App extends Component {
                 
               <div className="page-wrapper__inner">
                 <Route path="/" exact component={Welcome} onChange={this.yourHandler} />
-                <Route path="/instructions" component={Instructions} />
+
+                <Route path="/instructions"
+                  render={(routeProps) => (
+                      <Instructions
+                        setRoutePageview={this.setRoutePageview}
+                      />
+                    ) }
+                  />
+
+
                 <Route path="/setup" 
                   render={(routeProps) => (
                       <Setup
                         handleSetupSubmit={this.handleSetupSubmit}
+                        setRoutePageview={this.setRoutePageview}
                       />
                     )}
                 />
-                <Route path="/get-ready" component={GetReady} />
-                <Route path="/whos-up" component={WhosUp} />
+                
+                <Route path="/get-ready" 
+                  render={(routeProps) => (
+                      <GetReady
+                        setRoutePageview={this.setRoutePageview}
+                      />
+                    )}
+                />
+
+                <Route path="/whos-up" 
+                  render={(routeProps) => (
+                      <WhosUp
+                        setRoutePageview={this.setRoutePageview}
+                      />
+                    )}
+                />
+
                 <Route path="/the-winner" 
                   render={(routeProps) => (
                       <TheWinner
                         people={this.state.people}
                         doBonusRound={this.state.doBonusRound}
                         everything={this.state}
+                        setRoutePageview={this.setRoutePageview}
                       />
                     )}
                 />
@@ -106,6 +155,8 @@ export default class App extends Component {
                       <AllDone
                         people={this.state.people}
                         everything={this.state}
+                        setRoutePageview={this.setRoutePageview}
+                        setWrapUpStats={this.setWrapUpStats}
                       />
                     )}
                 />

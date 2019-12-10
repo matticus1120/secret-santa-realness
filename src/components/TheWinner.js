@@ -96,6 +96,8 @@ export default class TheWinner extends Component {
 
         this.getRandomGif('christmas', false);
 
+        this.props.setRoutePageview('/the-winner');
+
         setTimeout(() => {
 
             this.setWinner();

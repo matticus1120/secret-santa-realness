@@ -8,6 +8,10 @@ export default class Instructions extends Component {
         super(props);
     }
 
+    componentDidMount = () => {
+        this.props.setRoutePageview('/instructions');
+    }
+
     render() {
         return (
             <div className="main main--instructions">
