@@ -27,8 +27,8 @@ export default class TheWinner extends Component {
 
         this.state = {
             loading: true,
-            loadingTime: 5500,
-            // loadingTime: 94500,
+            // loadingTime: 5500,
+            loadingTime: 94500,
             peopleReduced: reducedPeople,
             peopleLength: props.people.length,
             winner: false,
@@ -82,9 +82,9 @@ export default class TheWinner extends Component {
            }
            else {
             axios.get(giphyURL).then(jsonResponse => {
-                console.log('jsonResponse.data.data.image_original_url', jsonResponse.data.data.image_original_url);
               this.setState({
-                loadingGif: jsonResponse.data.data.image_original_url
+                loadingGif: jsonResponse.data.data.image_original_url,
+                loadingGifUrl: jsonResponse.data.data.url
               })
             });
            } 
@@ -226,7 +226,10 @@ export default class TheWinner extends Component {
         return (
             <div className="winner-loading">
                 <h2>Loading...</h2>
+                <div className="winner-gif__img-wrapper">
                 <img src={this.state.loadingGif} />
+                <p className="credit">Img Credit: <a href={this.state.loadingGifUrl} target="_blank" title="Giphy">Giphy</a></p>
+                </div>
                 </div>
         )
     }

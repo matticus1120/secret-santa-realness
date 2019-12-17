@@ -32,6 +32,18 @@ body {
 	}
 }
 
+.credit {
+	a {
+		&:link, &:visited {
+			color: $gold;
+		}
+		&:hover, &:active {
+			color: $green;
+		}
+		
+		
+	}
+}
 .main--welcome {
 	padding-top: 90px;
 	.site-loader-outer {
@@ -48,6 +60,16 @@ body {
 			bottom: 90px;
 			text-align: right;
 			right: 80px;
+			a {
+				&:link, &:visited {
+					color: $gold;
+				}
+				&:hover, &:active {
+					color: $green;
+				}
+				
+				
+			}
 		}
 	}
 	.site-main-intro {
