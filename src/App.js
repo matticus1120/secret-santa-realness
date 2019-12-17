@@ -84,12 +84,6 @@ export default class App extends Component {
            
             <div className="page-wrapper">
 
-            <MetaTags>
-    <title>Secret Santa Realness - Gift Exchange Name Generator</title>
-    <meta name="description" content="Secret Santa Realness is The Internet’s First Ever Fully Automated Holiday Party Gift-Exchange Name-Generator. Goodbye, hat. So long, tiny papers." />
-    <meta property="og:title" content="Secret Santa Realness - Gift-Exchange Name-Generator" />
-    <meta property="og:image" content="/assets/img/santa-one.jpeg" />
-  </MetaTags>
 
               <div className="_container">
                 
