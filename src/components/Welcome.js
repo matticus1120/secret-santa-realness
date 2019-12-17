@@ -21,8 +21,12 @@ export default class Welcome extends Component {
                             <h1>Welcome to <br /><span>Secret Santa Realness</span></h1>
                             </div>
                         <p> There’s no wrong way to exchange gifts, but there is a right way. That way is this way. Secret Santa Realness is The Internet’s First Ever* Fully Automated Holiday Party Gift-Exchange Name-Generator.</p>
+                        <p><small><em>* unverified</em></small></p>
                         <div className="cta-row">
-                            <Link to="/instructions" className="btn btn-success btn--big">Let’s Party</Link>
+                            <Link to="/setup" className="btn btn-success btn--big">Let’s Party</Link>
+                         </div>
+                         <div className="cta-legal">
+                         <p>Or do you   <Link to="/instructions" >Need some instructions?</Link></p>
                          </div>
                     </div>
                 </div>

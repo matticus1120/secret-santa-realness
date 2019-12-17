@@ -290,15 +290,25 @@ input[type="number"] {
 		min-height: 30px;
 		height: 100%;
 		height: 100vh;
+		&__img-wrapper {
+			position: relative;
+			p {
+				position: absolute;
+				bottom: 0;
+				right: 8px;
+				margin: 0;
+				bottom: -31px;
+				font-size: 15px;
+			}
+		}
 
 		.winner-column-inner {
 			align-items: center;
-
 			h3 {
-				color: green;
+				color: $green;
 				font-size: 40px;
-				margin: 20px 0;
-				text-shadow: 2px 2px 2px white;
+				margin: 32px 0 20px;
+				text-shadow: 2px 2px 0px white;
 			}
 		}
 
@@ -310,7 +320,7 @@ input[type="number"] {
 
 		img {
 			width: 100%;
-			box-shadow: 3px 4px 8px 8px rgba(255, 255, 255, 0.4)
+			box-shadow: 3px 4px 8px 8px rgba(255, 255, 255, 0.2)
 		}
 	}
 }

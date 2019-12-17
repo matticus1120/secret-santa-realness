@@ -12,6 +12,9 @@ import "./scss/style.scss";
 
 import { initialState, reducer, appStore } from "./store/reducer";
 
+import MetaTags from 'react-meta-tags';
+
+
 import Welcome from './components/Welcome';
 import Instructions from './components/Instructions';
 import Setup from './components/Setup';
@@ -22,26 +25,7 @@ import AllDone from './components/AllDone';
 import SongPlayer from './components/SongPlayer';
 import StarBurst from './components/StarBurst';
 
-
-import Counter from './components/Counter';
-
-// import createHistory from 'history/createBrowserHistory'
-// const history = createHistory()
-// history.listen(location => {
-//   ReactGA.set({ page: location.pathname })
-//   ReactGA.pageview(location.pathname)
-// })
-
-
 ReactGA.initialize('UA-131051020-1');
-// 
-
-/*
-pass state to route
-https://til.hashrocket.com/posts/z8cimdpghg-passing-props-down-to-react-router-route
-https://github.com/ReactTraining/react-router/issues/3554
- */
-
 
 // function App() {
 export default class App extends Component {
@@ -99,6 +83,13 @@ export default class App extends Component {
           <Router >
            
             <div className="page-wrapper">
+
+            <MetaTags>
+    <title>Secret Santa Realness - Gift Exchange Name Generator</title>
+    <meta name="description" content="Secret Santa Realness is The Internet’s First Ever Fully Automated Holiday Party Gift-Exchange Name-Generator. Goodbye, hat. So long, tiny papers." />
+    <meta property="og:title" content="Secret Santa Realness - Gift-Exchange Name-Generator" />
+    <meta property="og:image" content="/assets/img/santa-one.jpeg" />
+  </MetaTags>
 
               <div className="_container">
                 

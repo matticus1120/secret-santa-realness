@@ -9,9 +9,15 @@
 	}
 	p {
 		max-width: 600px;
-		margin: 0 auto 50px auto;
+		margin: 0 auto 20px auto;
 		font-size: 22px;
 		text-align: center;
+		&:last-child {
+			margin-bottom: 50px;
+		}
+		small {
+
+		}
 	}
 	ol li {
 		text-align: center;

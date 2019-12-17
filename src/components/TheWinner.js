@@ -71,9 +71,12 @@ export default class TheWinner extends Component {
          );
 
         if( forWinner ) {
+
             axios.get(giphyURL).then(jsonResponse => {
+                console.log('jsonResponse.data.data', jsonResponse.data.data);
               this.setState({
-                winnerGifSrc: jsonResponse.data.data.image_original_url
+                winnerGifSrc: jsonResponse.data.data.image_original_url,
+                winnerGifUrl: jsonResponse.data.data.url
               })
             });
            }
@@ -191,6 +194,8 @@ export default class TheWinner extends Component {
 
         let footerContent = this.state.loading ? '' : this.getFooterContent();
 
+        let winnerAlt = `Special gif for ${this.state.winner}`;
+
         return (
             <div className="winner-columns">
                 <div className="winner-left">
@@ -202,8 +207,12 @@ export default class TheWinner extends Component {
                 </div>
                 <div className="winner-gif">
                 <div className="winner-column-inner">
-                    <img src={this.state.winnerGifSrc} />
+                    <div className="winner-gif__img-wrapper">
+                        <img src={this.state.winnerGifSrc} alt={winnerAlt} />
+                        <p className="credit">Img Credit: <a href={this.state.winnerGifUrl} target="_blank" title="Giphy">Giphy</a></p>
+                        </div>
                     {footerContent}
+
                     </div>
                 </div>
             </div>

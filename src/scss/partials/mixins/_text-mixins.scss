@@ -5,8 +5,8 @@
  /* Custom Selection Colour */
 
  *::selection {
- 	background: $theme-red;
- 	color: white;
+ 	background: $green;
+ 	color: white !important;
  }
 
  @mixin headingFont {
