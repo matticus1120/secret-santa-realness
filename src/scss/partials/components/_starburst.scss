@@ -14,8 +14,14 @@ $starburst-bg: $gold !default;
 		transform: rotate(-45deg);
 	}
 }
-
-
+@include smallTabletMax {
+	.starburst-outer {
+		    height: 127px;
+	    width: 100%;
+	    position: absolute;
+	    overflow: hidden;
+	}
+	}
 .starburst-wrapper {
 	position: absolute;
 	right: 0;
