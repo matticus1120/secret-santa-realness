@@ -185,6 +185,9 @@ input[type="number"] {
 		width: auto;
 		height: calc(100vh - 230px);
 		margin: 20px auto;
+		@include smallTabletMax {
+			height: calc(72vh - 230px);
+		}
 	}
 }
 
@@ -272,6 +275,9 @@ input[type="number"] {
 	img {
 		height: calc(100vh - 130px);
 		margin-top: 20px;
+		@include smallTabletMax {
+			height: calc(72vh - 230px);
+		}
 	}
 }
 
@@ -409,6 +415,16 @@ input[type="number"] {
 		animation: fadeIn 0.9s linear 8.5s;
 		animation-fill-mode: forwards;
 		margin-top: 30px;
+	}
+	p a {
+		&:link, &:visited {
+			color: $gold;
+		}
+		&:hover, &:active {
+			color: $green;
+		}
+		
+		
 	}
 }
 

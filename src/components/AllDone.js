@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 const personJabs = [
   "[Name] doesn’t look ready. Check their pulse.",
   "Is a doctor present? I’m worried about [Name].",
@@ -51,6 +53,10 @@ export default class AllDone extends Component {
                       <h1>Thanks for using <br />Secret Santa Realness!</h1>
                   </div>
                   <p> The Internet’s First Ever* Fully Automated Holiday Party Gift-Exchange Name-Generator <br /><br />
+                    <Link to="/setup" className="">Play again?</Link>
+                  <br />
+                  </p>
+                  <p>
                   <small><em>*Unverified</em></small> </p>
                   </div>
                 
