@@ -12,6 +12,7 @@
 		margin: 0 auto 20px auto;
 		font-size: 22px;
 		text-align: center;
+		text-shadow: 1px 1px 1px $green;
 		&:last-child {
 			margin-bottom: 50px;
 		}
@@ -49,7 +50,7 @@
 		p {
 			font-size: 17px;
 			text-align: center;
-			line-height: 25px;
+			line-height: 16px;
 		}
 	}
 }

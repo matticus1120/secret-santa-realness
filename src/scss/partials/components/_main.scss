@@ -314,6 +314,7 @@ input[type="number"] {
 		height: 100vh;
 		&__img-wrapper {
 			position: relative;
+			width: 100%;
 			p {
 				position: absolute;
 				bottom: 0;
@@ -329,7 +330,7 @@ input[type="number"] {
 			h3 {
 				color: $green;
 				font-size: 40px;
-				margin: 32px 0 20px;
+				margin: 68px 0 20px;
 				text-shadow: 2px 2px 0px white;
 			}
 		}
@@ -434,8 +435,8 @@ input[type=number] {
 @include smallTabletMax {
 	.get-ready img,
 	.winner-loading img {
-		height: auto;
-		min-height: initial;
+		// height: auto;
+		// min-height: initial;
 	}
 	.winner-columns {
 		flex-direction: column;
@@ -486,11 +487,12 @@ input[type=number] {
 				opacity: 0;
 				animation: fadeIn 0.5s linear 4s;
 				animation-fill-mode: forwards;
+				margin-top: 53px;
 			}
 
 			img {
 				width: 100%;
-				box-shadow: 3px 4px 15px 8px rgba(255, 255, 255, 0.6705882352941176);
+				// box-shadow: 3px 4px 15px 8px rgba(255, 255, 255, 0.6705882352941176);
 			}
 		}
 	}
