@@ -73,7 +73,7 @@ export default class SongPlayer extends Component {
 
 		var activeSong = songs[ randomNumber ];
 
-		songs.splice( randomNumber, 1 );
+		// songs.splice( randomNumber, 1 );
 
 		const songsInfo = {
 			songsReduced: songs,
