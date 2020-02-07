@@ -1,17 +1,11 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 
-
-
-
-import { initialState, reducer } from "../store/reducer";
-
-import SetupPeopleCounter from './SetupPeopleCounter';
-import SetupPersonInput from './SetupPersonInput';
-import SetupBonusRound from './SetupBonusRound';
-import SetupReview from './SetupReview';
-import SetupPlayMusic from './SetupPlayMusic';
+import SetupPeopleCounter from './setup/SetupPeopleCounter';
+import SetupPersonInput from './setup/SetupPersonInput';
+import SetupBonusRound from './setup/SetupBonusRound';
+import SetupReview from './setup/SetupReview';
+import SetupPlayMusic from './setup/SetupPlayMusic';
 
 import StarBurst from './StarBurst';
 
@@ -42,27 +36,24 @@ export default class Setup extends Component {
 
     }
     componentDidMount = () => {
-        setTimeout(()=>{
+        /*setTimeout(()=>{
             scrollToRef(this.mainRef);
-        }, 300);
+        }, 300);*/
     }
 
     componentDidMount = () => {
-        this.props.setRoutePageview('/setup');
+        // this.props.setRoutePageview('/setup');
     }
 
     handlePeopleCount = (count) => {
-        this.setState({ peopleCount: parseInt(count) });
-
-        setTimeout(()=> {
-            scrollToRef(this.personForms);
-        }, 400)
+        this.props.setSetting( {key: 'peopleCount', value: parseInt(count) } );
+        console.log('this.props.settings', this.props.settings);
     }
     
     setPersonName = (personName, personIndex) => {
         let tempPeople = this.state.people;
         tempPeople[personIndex] = personName;
-        this.setState({ people: tempPeople });
+        // this.setState({ people: tempPeople });
     }
 
     handlePlayMusic = (val) => {
@@ -93,7 +84,9 @@ export default class Setup extends Component {
 
     getPersonForms() {
         var peopleForms = [];
-        if( this.state.peopleCount > 0 ) {
+        
+        if( this.props.peopleCount > 0 ) {
+            
             for( var i = 0; i < this.state.peopleCount; i ++ ) {
                 
                 peopleForms.push(
@@ -146,9 +139,12 @@ export default class Setup extends Component {
             setupComplete: true
         });
         let tempState = this.state;
-        tempState.allPeople = tempState.people;
+
+        console.log('tempState', tempState);
+        // tempState.allPeople = tempState.people;
         // this.props.handleSetupSubmit( this.state );
-        this.props.handleSetupSubmit( tempState );
+        
+        // this.props.setPersonName( tempState );
     }
 
     renderRedirect = () => {
@@ -160,10 +156,6 @@ export default class Setup extends Component {
     render = () => {
         
         var personForm = this.getPersonForms();
-        /*this.personForms = React.createRef();
-        this.bonusRound = React.createRef(); 
-        this.bonusRound = React.createRef();
-        this.review = React.createRef();*/
 
         return (
             <div className="main main--setup" ref={this.mainRef}>

@@ -15,14 +15,14 @@ import { initialState, reducer, appStore } from "./store/reducer";
 import MetaTags from 'react-meta-tags';
 
 
-import Welcome from './components/Welcome';
-import Instructions from './components/Instructions';
-import Setup from './components/Setup';
-import GetReady from './components/GetReady';
-import WhosUp from './components/WhosUp';
-import TheWinner from './components/TheWinner';
-import AllDone from './components/AllDone';
-import SongPlayer from './components/SongPlayer';
+import Welcome from './containers/WelcomeContainer';
+import Instructions from './containers/InstructionsContainer';
+import Setup from './containers/SetupContainer';
+import GetReady from './containers/GetReadyContainer';
+import WhosUp from './containers/WhosUpContainer';
+import TheWinner from './containers/TheWinnerContainer';
+import AllDone from './containers/AllDoneContainer';
+import SongPlayer from './containers/SongPlayerContainer';
 import StarBurst from './components/StarBurst';
 
 ReactGA.initialize('UA-131051020-1');
