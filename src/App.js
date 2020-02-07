@@ -5,7 +5,7 @@ import ReactGA from 'react-ga';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import "./scss/style.scss";
+import "./styles/style.scss";
 
 
 
@@ -90,7 +90,7 @@ export default class App extends Component {
               <div className="page-wrapper__inner">
                 <Route path="/" exact component={Welcome} onChange={this.yourHandler} />
 
-                <Route path="/instructions"
+               <Route path="/instructions"
                   render={(routeProps) => (
                       <Instructions
                         setRoutePageview={this.setRoutePageview}
