@@ -1,18 +1,13 @@
-import React, { Component, useReducer, useEffect } from "react";
+import React, { Component } from "react";
 import ReactGA from 'react-ga';
 
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./styles/style.scss";
 
 
-
-
-import { initialState, reducer, appStore } from "./store/reducer";
-
-import MetaTags from 'react-meta-tags';
 
 
 import Welcome from './containers/WelcomeContainer';
@@ -23,7 +18,6 @@ import WhosUp from './containers/WhosUpContainer';
 import TheWinner from './containers/TheWinnerContainer';
 import AllDone from './containers/AllDoneContainer';
 import SongPlayer from './containers/SongPlayerContainer';
-import StarBurst from './components/StarBurst';
 
 ReactGA.initialize('UA-131051020-1');
 

@@ -2,7 +2,7 @@
  * Post Actions
  */
 
-// import { formatPost } from '../utils/storeHelpers.js';
+
 
 // set people
 export const SET_PEOPLE_BEGIN = 'SET_PEOPLE_BEGIN';
@@ -61,22 +61,21 @@ export const reducePeopleFailure = () => ({
 });
 
 export const reducePeopleSuccess = reducedPeople => ({
-    type: REDUCE_PEOPLE_SUCCESS,
-    payload: reducedPeople
+    type: REDUCE_PEOPLE_SUCCESS
 });
 
 
 /**
  * Reduce People Action
  */
-export function reducePeople(payload) {
+export function setReducedPeople(payload) {
 
     return dispatch => {
         
         dispatch(reducePeopleBegin());
 
         setTimeout(function(){
-            dispatch( reducePeopleSuccess( payload ));
+            dispatch( reducePeopleSuccess(  ));
         }, 1500);
 
     };

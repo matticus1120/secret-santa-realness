@@ -1,15 +1,8 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 
 import { Link } from "react-router-dom";
 
-// import WhosUpLoading from './WhosUpLoading';
-
 export default class WhosUp extends Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

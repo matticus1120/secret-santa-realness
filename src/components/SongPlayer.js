@@ -88,8 +88,7 @@ export default class SongPlayer extends Component {
     }
 
     render() {
-    	console.log('this.props.musicAnswer', this.props.musicAnswer);
-    	if( this.props.musicAnswer != 'yes' && this.props.musicAnswer != 'now' ) {
+    	if( this.props.musicAnswer !== 'yes' && this.props.musicAnswer !== 'now' ) {
     		return '';
     	}
 
@@ -102,7 +101,7 @@ export default class SongPlayer extends Component {
 		            onEnded={this.setSong}
 	            />
 	            <h4>{this.state.activeSong.title}</h4>
-	            <h5>Brought to you by: <a href={this.state.activeSong.creditUrl} target="_blank">Free Christmas Mp3</a> </h5>
+	            <h5>Brought to you by: <a href={this.state.activeSong.creditUrl} rel="noopener noreferrer" target="_blank">Free Christmas Mp3</a> </h5>
 	         </div>
         )
     }

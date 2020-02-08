@@ -1,14 +1,10 @@
 import React, {Component} from 'react';
 // import axios from 'axios';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
 
 import StarBurst from './StarBurst';
 
 export default class Welcome extends Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     getMainContent = () => {
         return (
@@ -41,8 +37,8 @@ export default class Welcome extends Component {
         return (
             <div className="main main--welcome">
             <div className="site-loader-outer">
-                    <img className="site-loader" src="https://media.giphy.com/media/KDH9hJ2mSEUYU/source.gif" />
-                    <p className="credit">Img Credit: <a href="https://giphy.com/gifs/santa-christmas-wave-KDH9hJ2mSEUYU" target="_blank">giphy</a></p>
+                    <img className="site-loader" src="https://media.giphy.com/media/KDH9hJ2mSEUYU/source.gif" alt="Site Loader" />
+                    <p className="credit">Img Credit: <a href="https://giphy.com/gifs/santa-christmas-wave-KDH9hJ2mSEUYU" rel="noopener noreferrer" target="_blank">giphy</a></p>
                     </div>
                     {content}
             </div>

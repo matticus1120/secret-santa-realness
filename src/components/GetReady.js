@@ -10,7 +10,7 @@ export default class GetReady extends Component {
 
                 <h3>Who’s Up First?</h3>
 
-                <img src="/assets/img/loader-santa.gif" />
+                <img src="/assets/img/loader-santa.gif" alt="Loader Santa" />
                 
                 <div className="cta-row">
                     <Link className="btn btn-success" to='/the-winner'>Click Here to Find Out</Link>

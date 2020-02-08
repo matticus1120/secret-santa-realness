@@ -1,40 +1,31 @@
-import React, { Component, useReducer, useEffect } from "react";
-import { initialState, reducer } from "../store/reducer";
+import React, { Component } from "react";
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
 
 import StoreHelpers from '../store/store-helpers';
 
-import WhosUpLoading from './WhosUpLoading';
-
 import axios from "axios";
-
-function getSetWinners() {
-    // const [state, dispatch] = useReducer(reducer, initialState);
-}
-
-
-
 
 export default class TheWinner extends Component {
 
     constructor(props) {
         super(props);
-
+    
+        console.log('this.props', this.props);
         // All people keeps changing both variables, cheating like this
         var allPeople = JSON.stringify(props.people);
-        var reducedPeople = props.people;
+        var reducedPeople = this.props.reducedPeople;
 
         this.state = {
             loading: true,
-            loadingTime: 5500,
+            loadingTime: 3000,
             // loadingTime: 94500,
             peopleReduced: reducedPeople,
-            peopleLength: props.people.length,
+            peopleLength: this.props.people.length,
             winner: false,
             lastRound: false,
             allPeople: JSON.parse(allPeople),
-            doBonusRound: props.doBonusRound,
+            doBonusRound: this.props.settings.doBonusRound,
             winnerIndex: 0,
             winnerGifSrc: '',
             loadingGif: ''
@@ -114,8 +105,10 @@ export default class TheWinner extends Component {
     set the winner
      */
     handleSetWinner = () => {
-    	let peopleReduced = this.state.peopleReduced;
-        let winningInfo = StoreHelpers.getWinnerReducedPeople(peopleReduced);
+        this.props.setReducedPeople();
+        console.log('set winner this.props', this.props);
+    	// let peopleReduced = this.props.reducedPeople;
+       /* let winningInfo = StoreHelpers.getWinnerReducedPeople(peopleReduced);
         let theWinner = winningInfo.winner;
         this.setState({
             winner: theWinner,
@@ -123,7 +116,7 @@ export default class TheWinner extends Component {
             lastRound: winningInfo.peopleReduced == 0,
             winnerIndex: this.state.allPeople.length - peopleReduced.length
         });
-        this.getRandomGif(theWinner);
+        this.getRandomGif(theWinner);*/
     }
 
    /* setWinnerGif = (winner) => {
@@ -196,12 +189,14 @@ export default class TheWinner extends Component {
 
         let winnerAlt = `Special gif for ${this.state.winner}`;
 
+        console.log('this.props.currentWinner', this.props.currentWinner);
+
         return (
             <div className="winner-columns">
                 <div className="winner-left">
                     <div className="winner-column-inner">
                         <div className="h1-wrapper">
-                            <h1>{this.state.winner}!!!!</h1>
+                            <h1>{this.props.currentWinner}!!!!</h1>
                         </div>
                     </div>
                 </div>
@@ -281,7 +276,7 @@ export default class TheWinner extends Component {
         let content = this.state.loading ? this.getLoadingContent() : this.getWinnerContent();
 
         var outerClasses = 'main main--winner ';
-    outerClasses += this.state.loading ? 'main--is-winner-loading' : 'main--is-winner-announced';
+        outerClasses += this.state.loading ? 'main--is-winner-loading' : 'main--is-winner-announced';
 
 
 

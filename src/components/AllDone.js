@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
 
 const personJabs = [
   "[Name] doesn’t look ready. Check their pulse.",
@@ -62,9 +62,9 @@ export default class AllDone extends Component {
                 <p className="all-done__jab">{jab}</p>
                 <div className="all-done__footer">
                   <div className="cta-row">
-                    <a className="btn btn--big btn-success" target="_blank" href="https://blackjet.ca/santa/?utm_source=website-starburst&utm_medium=cta&utm_campaign=secret-santa">Watch the making of!</a>
+                    <a className="btn btn--big btn-success" rel="noopener noreferrer" target="_blank" href="https://blackjet.ca/santa/?utm_source=website-starburst&utm_medium=cta&utm_campaign=secret-santa">Watch the making of!</a>
                   </div>
-                  <h3 className="all-done__credit">Brought you you by <a target="_blank" href="https://blackjet.ca/?utm_source=website-wrapup&utm_medium=cta&utm_campaign=secret-santa">Blackjet</a></h3>
+                  <h3 className="all-done__credit">Brought you you by <a rel="noopener noreferrer" target="_blank" href="https://blackjet.ca/?utm_source=website-wrapup&utm_medium=cta&utm_campaign=secret-santa">Blackjet</a></h3>
                </div>
             </div>
         )

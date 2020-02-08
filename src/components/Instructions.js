@@ -1,12 +1,8 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
 
 import StarBurst from './StarBurst';
 export default class Instructions extends Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     componentDidMount = () => {
         this.props.setRoutePageview('/instructions');
