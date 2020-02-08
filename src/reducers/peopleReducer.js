@@ -31,13 +31,14 @@ export default function postReducer(state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                error: true
+                error: false,
+                people: [ ...action.payload ]
             };
         case SET_PEOPLE_FAILURE:
             return {
                 ...state,
-                loading: false,
-                error: false
+                loading: true,
+                error: false,
             };
         case REDUCE_PEOPLE_BEGIN:
             return {
@@ -49,13 +50,13 @@ export default function postReducer(state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                error: true
+                error: false
             };
         case REDUCE_PEOPLE_FAILURE:
             return {
                 ...state,
                 loading: false,
-                error: false
+                error: true
             };
         
 

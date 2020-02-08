@@ -16,9 +16,7 @@ export default class Setup extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            peopleCount: 0,
             people: [],
-            peopleAreSet: false,
             readyForReview: false,
             doBonusRound: false,
             bonusIsSet: false,
@@ -44,50 +42,80 @@ export default class Setup extends Component {
     componentDidMount = () => {
         // this.props.setRoutePageview('/setup');
     }
-
+    
+    /**
+     * Set the store's peopleCount
+     */
     handlePeopleCount = (count) => {
         this.props.setSetting( {key: 'peopleCount', value: parseInt(count) } );
-        console.log('this.props.settings', this.props.settings);
+        scrollToRef(this.personForms);
     }
     
+    /**
+     * Set the persons name one at a time
+     */
     setPersonName = (personName, personIndex) => {
-        let tempPeople = this.state.people;
-        tempPeople[personIndex] = personName;
-        // this.setState({ people: tempPeople });
+        
+        let newPeople = this.state.people;
+        newPeople[personIndex] = personName;
+
+        this.setState({ 
+           people: [ ...newPeople ]
+        });
+
     }
+
+    /**
+     * Submit people names to the store
+     */
+    submitPeopleNames = () =>{
+
+        if( !this.state.people.length ) {
+            alert('Set names first!');
+            return;
+        }
+
+        // this.props.setSetting( {key: 'peopleAreSet', value: true } );   
+        this.props.setPeople(this.state.people);
+
+        setTimeout(()=> {
+            scrollToRef(this.music);
+        }, 400);
+
+    }
+    
+    /**
+     * Set bonus round
+     */
+    handleBonusRound = (doBonusRound) => {
+
+        this.props.setSetting( {key: 'doBonusRound', doBonusRound } );
+
+        setTimeout(()=> {
+            scrollToRef(this.music);
+        }, 400)
+
+    }
+
 
     handlePlayMusic = (val) => {
 
-        this.setState({
-            musicAnswer: val,
-            musicIsSet: true,
-            readyForReview: true
-        });
+        this.props.setSetting( {key: 'musicAnswer', val } );
 
         setTimeout(()=> {
             scrollToRef(this.review);
         }, 400)
 
     }
-
-    submitPeopleNames = () =>{
-        if( !this.state.people.length ) {
-            return;
-        }
-        this.setState({
-            peopleAreSet: true
-        });
-        setTimeout(()=> {
-            scrollToRef(this.music);
-        }, 400)
-    }
+    
 
     getPersonForms() {
-        var peopleForms = [];
         
-        if( this.props.peopleCount > 0 ) {
+        let peopleForms = [];
+        
+        if( this.props.settings.peopleCount > 0 ) {
             
-            for( var i = 0; i < this.state.peopleCount; i ++ ) {
+            for( let i = 0; i < this.props.settings.peopleCount; i ++ ) {
                 
                 peopleForms.push(
                     <SetupPersonInput 
@@ -118,20 +146,6 @@ export default class Setup extends Component {
             );
 
         }
-    }
-
-    handleBonusRound = (doBonusRound) => {
-
-        this.setState({
-            doBonusRound: doBonusRound,
-            bonusIsSet: true
-            // readyForReview: true
-        });
-
-        setTimeout(()=> {
-            scrollToRef(this.music);
-        }, 400)
-
     }
 
     handleSubmitSetup = () => {
@@ -178,23 +192,21 @@ export default class Setup extends Component {
 
                     <div className="setup-section-anchor" id="bonus-round" ref={this.bonusRound}>
                         <SetupBonusRound
-                            peopleAreSet={this.state.peopleAreSet}
+                            peopleAreSet={ !this.props.people.length ? false : true }
                             handleBonusRound={this.handleBonusRound}
                         />
-                        </div>
+                    </div>
 
                     <div className="setup-section-anchor" id="play-music" ref={this.music}>
                         <SetupPlayMusic
-                            bonusIsSet={this.state.bonusIsSet}
+                            bonusIsSet={ this.props.settings.doBonusRound === null ? false : true }
                             handlePlayMusic={this.handlePlayMusic}
                         />
-                        </div>
+                     </div>
 
                     <div className="setup-section-anchor" id="review" ref={this.review}>
                         <SetupReview
-                            readyForReview={this.state.readyForReview}
                             submitSetup={this.handleSubmitSetup}
-                            setupValues={this.state}
                         />
                     </div>
 

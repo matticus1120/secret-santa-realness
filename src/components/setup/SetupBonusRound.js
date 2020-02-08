@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const SetupBonusRound = ({ peopleAreSet, handleBonusRound }) => {
 
   if( !peopleAreSet ) {
-    return ''
+    return <div></div>
   }
 
   const setBonusRoundTrue = (val) => {

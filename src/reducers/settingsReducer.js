@@ -3,7 +3,6 @@
 */
 
 import {
-    // insert
     SET_SETTING_BEGIN,
     SET_SETTING_SUCCESS,
     SET_SETTING_FAILURE,
@@ -13,14 +12,11 @@ import {
 const initialState = {
   settings: {
     peopleCount: 0,
-    peopleAreSet: false,
     readyForReview: false,
-    doBonusRound: false,
-    bonusIsSet: false,
+    doBonusRound: null,
     setupComplete: false,
-    musicIsSet: false,
-    musicAnswer: false,
-   }, 
+    musicAnswer: null,
+  }, 
   loading: false,
   error: false
 };
