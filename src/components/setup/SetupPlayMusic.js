@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const SetupPlayMusic = ({ bonusIsSet, handlePlayMusic }) => {
 
@@ -12,10 +12,6 @@ const SetupPlayMusic = ({ bonusIsSet, handlePlayMusic }) => {
 
   const setMusicTrue = (val) => {
     handlePlayMusic('yes');
-  }
-
-  const setMusicNow = (val) => {
-    handlePlayMusic('now');
   }
 
   return (

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const SetupBonusRound = ({ peopleAreSet, handleBonusRound }) => {
 
@@ -12,8 +12,6 @@ const SetupBonusRound = ({ peopleAreSet, handleBonusRound }) => {
   const setBonusRoundFalse = (val) => {
     handleBonusRound(false);
   }
-
-  
 
   return (
     <div className="setup-section">
