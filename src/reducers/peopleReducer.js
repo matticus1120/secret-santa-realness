@@ -15,7 +15,7 @@ import {
 
 const initialState = {
   people: [],
-  reducedPeople: false,
+  reducedPeople: [],
   currentWinner: null
 };
 
@@ -50,8 +50,7 @@ export default function postReducer(state = initialState, action) {
                 error: false
             };
         case REDUCE_PEOPLE_SUCCESS:
-            console.log('REDUCE_PEOPLE_SUCCESS');
-            var reducedPeople = getReducedItems( state.people );
+            var reducedPeople = getReducedItems( [...state.reducedPeople] );
             return {
                 ...state,
                 loading: false,

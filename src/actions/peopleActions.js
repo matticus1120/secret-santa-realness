@@ -72,11 +72,9 @@ export function setReducedPeople(payload) {
 
     return dispatch => {
         
-        dispatch(reducePeopleBegin());
+        dispatch( reducePeopleBegin() );
 
-        setTimeout(function(){
-            dispatch( reducePeopleSuccess(  ));
-        }, 1500);
+        dispatch( reducePeopleSuccess() );
 
     };
 
