@@ -19,7 +19,7 @@ const initialState = {
 };
 
 
-export default function postReducer(state = initialState, action) {
+export default function giphyReducer(state = initialState, action) {
     switch (action.type) {
 
         case SET_GIPHY_BEGIN:

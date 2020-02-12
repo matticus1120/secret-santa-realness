@@ -4,8 +4,6 @@ import { BrowserRouter as Link } from "react-router-dom";
 
 import StoreHelpers from '../store/store-helpers';
 
-import axios from "axios";
-
 export default class TheWinner extends Component {
 
     constructor(props) {
@@ -20,54 +18,6 @@ export default class TheWinner extends Component {
             winnerGifSrc: '',
             loadingGif: ''
         }
-
-        
-
-    }
-
-    /*
-    Make a request to the GIPHY API, set state.
-     */
-    getRandomGif = (tag, forWinner = true) => {
-
-        const giphy = {
-            baseURL: "https://api.giphy.com/v1/gifs/",
-            key: "P4WZK1y0inqnsvkQFPUJ3q1aaTrPFpQS",
-            tag: tag,
-            type: "random",
-            rating: "g"
-        }
-
-        // Giphy API URL
-        let giphyURL = encodeURI(
-            giphy.baseURL +
-            giphy.type +
-            "?api_key=" +
-            giphy.key +
-            "&tag=" +
-            giphy.tag
-         );
-
-        if( forWinner ) {
-
-            axios.get(giphyURL).then(jsonResponse => {
-                console.log('jsonResponse.data.data', jsonResponse.data.data);
-              this.setState({
-                winnerGifSrc: jsonResponse.data.data.image_original_url,
-                winnerGifUrl: jsonResponse.data.data.url
-              })
-            });
-           }
-           else {
-            axios.get(giphyURL).then(jsonResponse => {
-              this.setState({
-                loadingGif: jsonResponse.data.data.image_original_url,
-                loadingGifUrl: jsonResponse.data.data.url
-              })
-            });
-           } 
-
-      
     }
 
     /*
@@ -75,7 +25,7 @@ export default class TheWinner extends Component {
      */
     componentDidMount = () => {
 
-        this.getRandomGif('christmas', false);
+        // this.getRandomGif('christmas', false);
         this.setWinner();
 
         setTimeout(() => {
@@ -103,7 +53,7 @@ export default class TheWinner extends Component {
     }
 
     hanldeUpNext = () => {
-        this.getRandomGif('christmas', false );
+        // this.getRandomGif('christmas', false );
         this.props.setGiphy({tag: 'trevor noah', type: 'loadingGif'});
         this.setState({
             loading: true,
@@ -127,7 +77,7 @@ export default class TheWinner extends Component {
      */
     handleBonusRound = () => {
 
-        this.getRandomGif(this.state.winner);
+        // this.getRandomGif(this.state.winner);
         
         this.setBonusWinner();
 
@@ -162,10 +112,6 @@ export default class TheWinner extends Component {
 
         let footerContent = this.state.loading ? '' : this.getFooterContent();
 
-        let winnerAlt = `Special gif for ${this.state.winner}`;
-
-        console.log('this.props', this.props);
-
         return (
             <div className="winner-columns">
                 <div className="winner-left">
@@ -178,8 +124,8 @@ export default class TheWinner extends Component {
                 <div className="winner-gif">
                 <div className="winner-column-inner">
                     <div className="winner-gif__img-wrapper">
-                        <img src={this.props.gifs.winnerGif} alt={winnerAlt} />
-                        <p className="credit">Img Credit: <a href={this.state.winnerGifUrl} target="_blank" rel="noopener noreferrer" title="Giphy">Giphy</a></p>
+                        <img src={this.props.giphs.winnerGif.image_url} alt={this.props.giphs.winnerGif.title} />
+                        <p className="credit">Img Credit: <a href={this.props.giphs.winnerGif.source} target="_blank" rel="noopener noreferrer" title="Giphy">Giphy</a></p>
                         </div>
                     {footerContent}
 
@@ -247,12 +193,10 @@ export default class TheWinner extends Component {
     }
 
     render() {
-
-        if( !this.props.gifs ) return <div></div>
+        
+        if( !this.props.giphs.winnerGif ) return <div></div>
         
         let content = this.state.loading ? this.getLoadingContent() : this.getWinnerContent();
-
-
 
         var outerClasses = 'main main--winner ';
         outerClasses += this.state.loading ? 'main--is-winner-loading' : 'main--is-winner-announced';
