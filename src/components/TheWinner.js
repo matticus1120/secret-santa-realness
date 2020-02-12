@@ -14,8 +14,6 @@ export default class TheWinner extends Component {
             loadingTime: 3000,
             lastRound: false,
             doBonusRound: this.props.settings.doBonusRound,
-            winnerIndex: 0,
-            winnerGifSrc: '',
             loadingGif: ''
         }
     }
@@ -25,7 +23,6 @@ export default class TheWinner extends Component {
      */
     componentDidMount = () => {
 
-        // this.getRandomGif('christmas', false);
         this.setWinner();
 
         setTimeout(() => {
