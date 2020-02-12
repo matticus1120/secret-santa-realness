@@ -29,10 +29,6 @@ export default function giphyReducer(state = initialState, action) {
                 error: false
             };
         case SET_GIPHY_SUCCESS:
-            console.log('action.payload', action.payload);
-            console.log('state.gifs', state.gifs);
-            var newgiphs = {...state.giphs, [action.payload.type]: action.payload.gif };
-            console.log('newgiphs', newgiphs);
             return {
                 ...state,
                 loading: false,
