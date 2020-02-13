@@ -8,8 +8,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/style.scss";
 
 
-
-
 import Welcome from './containers/WelcomeContainer';
 import Instructions from './containers/InstructionsContainer';
 import Setup from './containers/SetupContainer';
@@ -19,7 +17,7 @@ import TheWinner from './containers/TheWinnerContainer';
 import AllDone from './containers/AllDoneContainer';
 import SongPlayer from './containers/SongPlayerContainer';
 
-ReactGA.initialize('UA-131051020-1');
+// ReactGA.initialize('UA-131051020-1');
 
 // function App() {
 export default class App extends Component {
