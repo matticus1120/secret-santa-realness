@@ -13,7 +13,7 @@ const initialState = {
   giphs: {
     loadingGif: null,
     winnerGif: null,
-  }, 
+  },
   loading: false,
   error: false
 };

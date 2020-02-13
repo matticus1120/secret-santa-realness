@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-
 import { BrowserRouter as Link } from "react-router-dom";
-
-import StoreHelpers from '../store/store-helpers';
 
 export default class TheWinner extends Component {
 
@@ -11,11 +8,10 @@ export default class TheWinner extends Component {
     
         this.state = {
             loading: true,
-            loadingTime: 3000,
+            loadingTime: 7000,
             lastRound: false,
-            doBonusRound: this.props.settings.doBonusRound,
-            loadingGif: ''
         }
+
     }
 
     /*
@@ -25,48 +21,28 @@ export default class TheWinner extends Component {
 
         this.setWinner();
 
-        setTimeout(() => {
-            this.setState({
-                loading: false
-            })
-        }, this.state.loadingTime);
-
     }
-
     
     /*
-    set the winner
+    set the winnerm, loading gif, loading state
      */
-    handleSetWinner = () => {
-        this.props.setReducedPeople();
-        this.props.setGiphy({tag: 'trevor noah', type: 'winnerGif'});
-    }
-
     setWinner = () => {
-        this.setState({
-            loading: false,
-        });
-        this.handleSetWinner();
-    }
+        
+        this.setState({ loading: true });
 
-    hanldeUpNext = () => {
-        // this.getRandomGif('christmas', false );
-        this.props.setGiphy({tag: 'trevor noah', type: 'loadingGif'});
-        this.setState({
-            loading: true,
-            winnerGifSrc: '',
-            winner: ''
-        });
+        this.props.setReducedPeople();
 
-        this.setWinner();
+        this.props.setGiphy({tag: this.props.currentWinner, type: 'winnerGif'});
+        this.props.setGiphy({tag: 'Christmas', type: 'loadingGif'});
 
         setTimeout(() => {
 
-            this.setState({
-                loading: false
-            })
+           this.setState({ loading: false });
+           this.props.setGiphy({tag: false, type: 'loadingGif'});
 
         }, this.state.loadingTime);
+
+
     }
 
     /*
@@ -83,6 +59,7 @@ export default class TheWinner extends Component {
                 loading: true,
             });
         }, this.state.loadingTime);
+
     }
 
     /*
@@ -92,13 +69,7 @@ export default class TheWinner extends Component {
     setBonusWinner = () => {
         this.setState({
             loading: false,
-        });
-        let winningInfo = StoreHelpers.getWinnerReducedPeople(this.props.people);
-        let theWinner = winningInfo.winner;
-        this.setState({
-            winner: theWinner,
             lastRound: true,
-            doBonusRound: false
         });
     }
     
@@ -110,40 +81,55 @@ export default class TheWinner extends Component {
         let footerContent = this.state.loading ? '' : this.getFooterContent();
 
         return (
+            
             <div className="winner-columns">
+                
                 <div className="winner-left">
                     <div className="winner-column-inner">
                         <div className="h1-wrapper">
-                            <h1>{this.props.currentWinner}!!!!</h1>
+                            <h1>{this.props.currentWinner}!</h1>
                         </div>
                     </div>
                 </div>
+
                 <div className="winner-gif">
-                <div className="winner-column-inner">
-                    <div className="winner-gif__img-wrapper">
-                        <img src={this.props.giphs.winnerGif.image_url} alt={this.props.giphs.winnerGif.title} />
-                        <p className="credit">Img Credit: <a href={this.props.giphs.winnerGif.source} target="_blank" rel="noopener noreferrer" title="Giphy">Giphy</a></p>
+                    <div className="winner-column-inner">
+                        <div className="winner-gif__img-wrapper">
+                            
+                            <img src={this.props.giphs.winnerGif.image_url} alt={this.props.giphs.winnerGif.title} />
+                            <p className="credit">Img Credit: <a href={this.props.giphs.winnerGif.source} target="_blank" rel="noopener noreferrer" title="Giphy">Giphy</a></p>
+
                         </div>
-                    {footerContent}
+                        
+                        {footerContent}
 
                     </div>
                 </div>
             </div>
+
         )
+
+    }
+
+    getLoadingGIf = () => {
+        return this.props.giphs.loadingGif ?
+            <div className="winner-gif__img-wrapper">
+                <img src={this.props.giphs.loadingGif.image_url} alt={this.props.giphs.loadingGif.title} />
+                <p className="credit">Img Credit: <a href={this.state.loadingGifUrl} target="_blank" rel="noopener noreferrer" title="Giphy">Giphy</a></p>
+            </div> : '';
+
     }
     
     /*
     get the loading screen
      */
     getLoadingContent = () => {
+
         return (
             <div className="winner-loading">
                 <h2>Loading...</h2>
-                <div className="winner-gif__img-wrapper">
-                <img src={this.state.loadingGif} alt="Winner Gif" />
-                <p className="credit">Img Credit: <a href={this.state.loadingGifUrl} target="_blank" rel="noopener noreferrer" title="Giphy">Giphy</a></p>
-                </div>
-                </div>
+                {this.getLoadingGIf()}
+            </div>
         )
     }
     
@@ -153,8 +139,8 @@ export default class TheWinner extends Component {
     getNextButton = () => {
     	return (
     		<div className="winner-footer">
-	    		<p> {this.state.winnerIndex} / {this.props.people.length} </p>
-	    		<button className="btn btn-success" onClick={this.hanldeUpNext}>Who's next?</button>
+	    		<p> {this.props.people.length - this.props.reducedPeople.length} / {this.props.people.length} </p>
+	    		<button className="btn btn-success" onClick={this.setWinner}>Who's next?</button>
 	    	</div>
     	)
     }   
@@ -163,23 +149,24 @@ export default class TheWinner extends Component {
     get the last screen - dependant on if there's a bonus round or not
      */
     getWrapUp = () => {
-    	if( this.props.settings.doBonusRound ) {
-    		return (
+    	
+        return this.props.settings.doBonusRound ?
+
+    		 (
     			<div className="start-bonus winner-footer">
-    			<h3>Bonus Round</h3>
-    			<p>Doesn’t everyone look happy with their gift?</p>
+        			<h3>Bonus Round</h3>
+        			<p>Doesn’t everyone look happy with their gift?</p>
     				<button className="btn btn-success" onClick={this.handleBonusRound}>Turn Those Smiles Upside Down</button>
     			</div>
-    		)
-    	}
-    	else {
-    		return (
+    		) :
+
+            (
     			<div className="winner-footer">
 	    			<h3>That's all!</h3>
 	    			<Link to="/all-done" className="btn btn-success">Wrap up...</Link>
 	    		</div>
     		)
-    	}
+
     }
     
     /*

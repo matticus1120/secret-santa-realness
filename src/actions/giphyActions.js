@@ -35,6 +35,11 @@ export function setGiphy(payload) {
         
         dispatch(setGiphyBegin());
 
+        if( !payload.tag ) {
+            setGiphySuccess( { gif: false, type: payload.type } );
+            return;   
+        }
+
         const giphy = {
             baseURL: "https://api.giphy.com/v1/gifs/",
             key: "P4WZK1y0inqnsvkQFPUJ3q1aaTrPFpQS",
@@ -57,8 +62,7 @@ export function setGiphy(payload) {
                 return res.json();
             })
             .then((json) => {
-                dispatch(setGiphySuccess( { gif: json.data, type: payload.type } ));    
-                console.log('json', json);                
+                dispatch(setGiphySuccess( { gif: json.data, type: payload.type } )); 
                 return json;
 
             })
