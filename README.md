@@ -9,4 +9,4 @@ The mind-child of some talented folks at [Blackjet](http://blackjet.ca/).
 [Play the game now](http://secretsantarealness.com/)!
 
 ## To Do:
-* Currently refactoring to use Redux, and to generally clean up the code-base.
+* Currently refactoring to use Redux, and to generally clean up the code-base. (on branch "redux")
