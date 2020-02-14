@@ -30,8 +30,11 @@ export default class TheWinner extends Component {
         
         this.setState({ loading: true });
 
+        // dispatch action to set the reduced people, set the winner
         this.props.setReducedPeople();
-
+        
+        // set the current winner - however, this requires the reduced people to be set
+        // -- need to work on waiting for the setReducedPeople to complete before calling the setGiphy action
         this.props.setGiphy({tag: this.props.currentWinner, type: 'winnerGif'});
         this.props.setGiphy({tag: 'Christmas', type: 'loadingGif'});
 
@@ -177,8 +180,12 @@ export default class TheWinner extends Component {
     }
 
     render() {
+
+        console.log('reRender: ', this.props);
         
-        if( !this.props.giphs.winnerGif ) return <div></div>
+        // console.log('this.props.giphs.winnerGif', this.props.giphs.winnerGif);
+
+        if( !this.props.giphs.winnerGif || !this.props.currentWinner ) return <div></div>
         
         let content = this.state.loading ? this.getLoadingContent() : this.getWinnerContent();
 

@@ -47,7 +47,7 @@ export default class Setup extends Component {
 
         setTimeout(()=> {
             scrollToRef(this.music);
-        }, 400);
+        }, 0);
 
     }
     
@@ -60,7 +60,7 @@ export default class Setup extends Component {
 
         setTimeout(()=> {
             scrollToRef(this.music);
-        }, 400)
+        }, 0)
 
     }
 
@@ -74,7 +74,7 @@ export default class Setup extends Component {
 
         setTimeout(()=> {
             scrollToRef(this.review);
-        }, 400)
+        }, 0)
 
     }
     

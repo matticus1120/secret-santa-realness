@@ -34,7 +34,7 @@ export function setGiphy(payload) {
     return dispatch => {
         
         dispatch(setGiphyBegin());
-
+        // console.log('payload.tag', payload.tag);
         if( !payload.tag ) {
             setGiphySuccess( { gif: false, type: payload.type } );
             return;   
