@@ -42,7 +42,7 @@ export function setPeople(payload) {
 
         setTimeout(function(){
 			dispatch( setPeopleSuccess( payload ));
-        }, 1500);
+        }, 0);
 
     };
 

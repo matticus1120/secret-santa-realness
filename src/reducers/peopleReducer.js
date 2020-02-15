@@ -13,6 +13,21 @@ import {
    
 } from '../actions/peopleActions';
 
+/*const initialState = {
+  people: [
+    'Matt',
+    'Joe',
+    'SHIT',
+    'what',
+  ],
+  reducedPeople: [
+    'Matt',
+    'Joe',
+    'SHIT',
+  ],
+  currentWinner: null
+};*/
+
 const initialState = {
   people: [],
   reducedPeople: [],

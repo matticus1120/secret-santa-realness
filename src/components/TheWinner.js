@@ -35,8 +35,10 @@ export default class TheWinner extends Component {
         
         // set the current winner - however, this requires the reduced people to be set
         // -- need to work on waiting for the setReducedPeople to complete before calling the setGiphy action
-        this.props.setGiphy({tag: this.props.currentWinner, type: 'winnerGif'});
-        this.props.setGiphy({tag: 'Christmas', type: 'loadingGif'});
+        // setTimeout(()=>{
+            this.props.setGiphy({tag: this.props.currentWinner, type: 'winnerGif'});
+            this.props.setGiphy({tag: 'Christmas', type: 'loadingGif'});
+        // }, 0) ;
 
         setTimeout(() => {
 
@@ -181,7 +183,7 @@ export default class TheWinner extends Component {
 
     render() {
 
-        console.log('reRender: ', this.props);
+        // console.log('reRender: ', this.props);
         
         // console.log('this.props.giphs.winnerGif', this.props.giphs.winnerGif);
 

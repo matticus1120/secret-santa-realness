@@ -45,9 +45,7 @@ export default class Setup extends Component {
 
         this.props.setPeople(people);
 
-        setTimeout(()=> {
-            scrollToRef(this.music);
-        }, 0);
+        scrollToRef(this.music);
 
     }
     
