@@ -31,7 +31,9 @@ export default class TheWinner extends Component {
         this.setState({ loading: true });
 
         // dispatch action to set the reduced people, set the winner
-        this.props.setReducedPeople();
+        this.props.setReducedPeople().then(()=>{
+            console.log('you did it');
+        })
         
         // set the current winner - however, this requires the reduced people to be set
         // -- need to work on waiting for the setReducedPeople to complete before calling the setGiphy action
