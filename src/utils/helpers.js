@@ -30,31 +30,5 @@ export const getReducedItems = items => {
 		reducedItems: newItems,
 		removedItem: randomItem
 	}
-	
-	// peopleReduced.splice( randomNumber, 1 );
-}
-
-/*
-var StoreHelpers = {
-
-	// passing the reduced people, get the resulting array of people AND the winner
-	getWinnerReducedPeople( peopleReduced ) {
-
-		var peopleLength = peopleReduced.length;
-		var randomNumber = Math.floor((Math.random() * peopleLength) + 1) - 1;
-
-		var winner = peopleReduced[ randomNumber ];
-
-		peopleReduced.splice( randomNumber, 1 );
-
-		const winningInfo = {
-			peopleReduced: peopleReduced,
-			winner: winner
-		}
-
-		return winningInfo;
-
-	}
 
 }
-module.exports = StoreHelpers;*/

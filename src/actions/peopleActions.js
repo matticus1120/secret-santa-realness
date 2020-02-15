@@ -87,7 +87,9 @@ export function setReducedPeople(payload) {
 
 
 
-
+/**
+ * The following is a great example for creating promises
+ */
 
 
 // const myPromise = new Promise((resolve, reject) => {

@@ -16,22 +16,26 @@ class SetupReview extends Component {
 
 		return (
 			<div className="setup-section setup-section--review">
-				<h2>Are you a liar?</h2>
-				<h4>Or is this information correct?</h4>
+				<div className="setup-section__inner">
 
-				<div className="form-review">
-					<p className="players"><strong>The Players:<br /></strong> Are <em>{this.props.people.join(', ')}</em> ready to party?</p>
-					<p className="bonus"><strong>Bonus round?<br /></strong> {bonusRoundString}</p>
-					<p className="music"><strong>Play some music?<br /></strong> {musicString}</p>
-					<p className="jab"><strong>{jab}</strong></p>
-				</div>
+					<h2>Are you a liar?</h2>
+					<h4>Or is this information correct?</h4>
 
-				
-				<label>Are you ready to...</label>
-				
-				<div className="cta-row">
-					<button className="btn btn-success" onClick={this.props.submitSetup}>Party?!!</button>
-				</div>
+					<div className="form-review">
+						<p className="players"><strong>The Players:<br /></strong> Are <em>{this.props.people.join(', ')}</em> ready to party?</p>
+						<p className="bonus"><strong>Bonus round?<br /></strong> {bonusRoundString}</p>
+						<p className="music"><strong>Play some music?<br /></strong> {musicString}</p>
+						<p className="jab"><strong>{jab}</strong></p>
+					</div>
+
+					
+					<label>Are you ready to...</label>
+					
+					<div className="cta-row">
+						<button className="btn btn-success" onClick={this.props.submitSetup}>Party?!!</button>
+					</div>
+
+				</div>	
 
 			</div>
 
