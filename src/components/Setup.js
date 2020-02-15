@@ -9,7 +9,11 @@ import SetupPlayMusic from './setup/SetupPlayMusic';
 
 import StarBurst from './StarBurst';
 
-const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop) ;
+const scrollToRef = (ref, timeout = 300 ) => {
+    setTimeout(()=>{
+        window.scrollTo(0, ref.current.offsetTop)
+    }, timeout);
+}
 
 export default class Setup extends Component {
 

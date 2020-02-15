@@ -1,14 +1,15 @@
 import React, { Component } from "react";
-import { BrowserRouter as Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default class TheWinner extends Component {
 
     constructor(props) {
         super(props);
-    
+        
+        // local state 
         this.state = {
             loading: true,
-            loadingTime: 7000,
+            loadingTime: 6000,
             lastRound: false,
         }
 
@@ -29,12 +30,12 @@ export default class TheWinner extends Component {
     setWinner = () => {
         
         this.setState({ loading: true });
+        this.props.setGiphy({tag: 'Christmas', type: 'loadingGif'});
 
         // only set the gifs after the winner has been set. Pass a function
         // to the people action that set the gifs
         const callBack = () => {
             this.props.setGiphy({tag: this.props.currentWinner, type: 'winnerGif'});
-            this.props.setGiphy({tag: 'Christmas', type: 'loadingGif'});
         }
         this.props.setReducedPeople( callBack );
         
@@ -182,6 +183,15 @@ export default class TheWinner extends Component {
     }
 
     render() {
+
+        if( !this.props.people.length ) {
+            return (
+                <div className="container text-center">
+                    <h3>You need to set up first.</h3>
+                    <Link to="/setup" className="btn btn-success">Go get em.</Link>
+                </div>
+            ) 
+        }
 
         if( !this.props.giphs.winnerGif || !this.props.currentWinner ) return <div></div>
         
