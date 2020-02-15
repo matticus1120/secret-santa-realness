@@ -74,12 +74,42 @@ export function setReducedPeople(payload) {
         
         dispatch( reducePeopleBegin() );
 
-        dispatch( reducePeopleSuccess() );
+        return new Promise((resolve, reject) => {
+            setTimeout(()=>{
+                dispatch( reducePeopleSuccess() );
+                resolve();
+            }, 800);
+        });
 
     };
 
 }
 
+
+
+
+
+
+// const myPromise = new Promise((resolve, reject) => {
+//     if (Math.random() * 100 < 90) {
+//         console.log('resolving the promise ...');
+//         resolve('Hello, Promises!');
+//     }
+//     reject(new Error('In 10% of the cases, I fail. Miserably.'));
+// });
+
+// Two functions 
+// const onResolved = (resolvedValue) => console.log(resolvedValue);
+// const onRejected = (error) => console.log(error);
+
+// myPromise.then(onResolved, onRejected);
+
+// Same as above, written concisely
+// myPromise.then((resolvedValue) => {
+//     console.log(resolvedValue);
+// }, (error) => {
+//     console.log(error);
+// });
 
 
 

@@ -66,7 +66,6 @@ export default function postReducer(state = initialState, action) {
             };
         case REDUCE_PEOPLE_SUCCESS:
             var reducedPeople = getReducedItems( [...state.reducedPeople] );
-            console.log('reducedPeople', reducedPeople);
             return {
                 ...state,
                 loading: false,

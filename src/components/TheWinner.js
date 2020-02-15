@@ -30,18 +30,15 @@ export default class TheWinner extends Component {
         
         this.setState({ loading: true });
 
-        // dispatch action to set the reduced people, set the winner
-        this.props.setReducedPeople().then(()=>{
-            console.log('you did it');
-        })
-        
-        // set the current winner - however, this requires the reduced people to be set
-        // -- need to work on waiting for the setReducedPeople to complete before calling the setGiphy action
-        // setTimeout(()=>{
+        // only set the gifs after the winner has been set. Pass a function
+        // to the people action that set the gifs
+        const callBack = () => {
             this.props.setGiphy({tag: this.props.currentWinner, type: 'winnerGif'});
             this.props.setGiphy({tag: 'Christmas', type: 'loadingGif'});
-        // }, 0) ;
-
+        }
+        this.props.setReducedPeople( callBack );
+        
+       
         setTimeout(() => {
 
            this.setState({ loading: false });
@@ -157,22 +154,23 @@ export default class TheWinner extends Component {
      */
     getWrapUp = () => {
     	
-        return this.props.settings.doBonusRound ?
+        return this.props.settings.doBonusRound 
 
-    		 (
+            ?
+
     			<div className="start-bonus winner-footer">
         			<h3>Bonus Round</h3>
         			<p>Doesn’t everyone look happy with their gift?</p>
     				<button className="btn btn-success" onClick={this.handleBonusRound}>Turn Those Smiles Upside Down</button>
     			</div>
-    		) :
 
-            (
+    		:
+
     			<div className="winner-footer">
 	    			<h3>That's all!</h3>
 	    			<Link to="/all-done" className="btn btn-success">Wrap up...</Link>
 	    		</div>
-    		)
+    		
 
     }
     
@@ -184,10 +182,6 @@ export default class TheWinner extends Component {
     }
 
     render() {
-
-        // console.log('reRender: ', this.props);
-        
-        // console.log('this.props.giphs.winnerGif', this.props.giphs.winnerGif);
 
         if( !this.props.giphs.winnerGif || !this.props.currentWinner ) return <div></div>
         

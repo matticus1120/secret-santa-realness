@@ -16,8 +16,17 @@ function mapStateToProps(state, ownProps) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setReducedPeople: () => {
-    	dispatch(setReducedPeople());
+
+    // send a function as a parament so that you can call it after the action completes
+    setReducedPeople: ( callback ) => {
+    	
+      dispatch(setReducedPeople())
+        .then(()=>{
+          
+          callback();
+
+        });
+
     },
     setGiphy: (payload) => {
     	dispatch(setGiphy(payload));
